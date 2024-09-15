@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_banking/screens/balance_screen.dart';
 import 'screens/changecard_screen.dart';
 import 'widgets/custom_button.dart';
 import 'screens/notification_screen.dart';
@@ -56,6 +57,11 @@ class MyHomePage extends StatelessWidget {
             CustomButton(
               buttonText: 'Profile',
               destination: ProfileScreen(),
+            ),
+            SizedBox(height: 20),
+            CustomButton(
+              buttonText: 'Balance',
+              destination: BalanceScreen(),
             ),
           ],
         ),
