@@ -19,8 +19,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             // Tombol Cancel dengan background putih
             TextButton(
               style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 98, 98, 98), // Background warna putih
-                foregroundColor: Colors.white, // Text warna putih            
+                backgroundColor: const Color.fromARGB(
+                    255, 98, 98, 98), // Background warna putih
+                foregroundColor: Colors.white, // Text warna putih
               ),
               child: const Text("Cancel"),
               onPressed: () {
@@ -37,7 +38,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {
                 Navigator.of(context).pop(); // Tutup dialog
                 // Tambahkan logika untuk logout atau navigasi ke halaman logout
-                Navigator.pushNamed(context, '/logout'); // Contoh navigasi ke halaman logout
+                Navigator.pushNamed(
+                    context, '/logout'); // Contoh navigasi ke halaman logout
               },
             ),
           ],
@@ -137,9 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           child: IconButton(
-                            onPressed: () {
-                              print("Set Limit button pressed");
-                            },
+                            onPressed: () {},
                             icon: const Icon(Icons.attach_money),
                             color: Colors.teal,
                             iconSize: 24,
@@ -161,9 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           child: IconButton(
-                            onPressed: () {
-                              print("Block Card button pressed");
-                            },
+                            onPressed: () {},
                             icon: const Icon(Icons.block),
                             color: Colors.red,
                             iconSize: 24,
@@ -185,9 +183,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           child: IconButton(
-                            onPressed: () {
-                              print("Change Card button pressed");
-                            },
+                            onPressed: () {},
                             icon: const Icon(Icons.credit_card),
                             color: Colors.blue,
                             iconSize: 24,

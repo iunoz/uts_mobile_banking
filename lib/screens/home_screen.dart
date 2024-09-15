@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_banking/screens/topupemoney_screen.dart';
 import '../widgets/custom_button.dart';
 import 'changecard_screen.dart';
 import 'notification_screen.dart';
@@ -23,34 +24,40 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Tombol untuk ChangeCardScreen
-            const CustomButton(
-              buttonText: 'Change Card Screen',
+            CustomButton(
+              buttonText: 'Change Card',
               destination: ChangeCardScreen(),
               color: Color.fromARGB(255, 192, 248, 214),
             ),
-            const SizedBox(height: 20), // jarak antar tombol
+            SizedBox(height: 20), // jarak antar tombol
             // Tombol untuk NotificationScreen
             CustomButton(
               buttonText: 'Notifications',
               destination: NotificationScreen(),
-              color: const Color.fromARGB(255, 192, 248, 214),
+              color: Color.fromARGB(255, 192, 248, 214),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             // Tombol untuk ProfileScreen
-            const CustomButton(
+            CustomButton(
               buttonText: 'Profile',
               destination: ProfileScreen(),
               color: Color.fromARGB(255, 192, 248, 214),
             ),
-            const SizedBox(height: 20),
-            const CustomButton(
+            SizedBox(height: 20),
+            CustomButton(
               buttonText: 'Balance',
               destination: BalanceScreen(),
+              color: Color.fromARGB(255, 192, 248, 214),
+            ),
+            SizedBox(height: 20),
+            CustomButton(
+              buttonText: 'Top Up E-Money',
+              destination: TopupemoneyScreen(),
               color: Color.fromARGB(255, 192, 248, 214),
             ),
           ],

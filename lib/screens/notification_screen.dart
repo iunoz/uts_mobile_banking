@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification'),
+        title: const Text('Notification'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         children: [
           _buildNotificationItem(
               "09/09/24 15:30",
@@ -37,8 +38,8 @@ class NotificationScreen extends StatelessWidget {
 
   Widget _buildNotificationItem(String date, String message, Color bgColor) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(10),
@@ -46,8 +47,8 @@ class NotificationScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(date, style: TextStyle(fontWeight: FontWeight.bold)),
-          SizedBox(height: 5),
+          Text(date, style: const TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 5),
           Text(message),
         ],
       ),

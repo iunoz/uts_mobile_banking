@@ -5,10 +5,10 @@ class BalanceScreen extends StatefulWidget {
   const BalanceScreen({super.key});
 
   @override
-  _BalanceScreenState createState() => _BalanceScreenState();
+  BalanceScreenState createState() => BalanceScreenState();
 }
 
-class _BalanceScreenState extends State<BalanceScreen> {
+class BalanceScreenState extends State<BalanceScreen> {
   bool _isBalanceHidden =
       true; // This boolean will track whether the balance is hidden or shown
 

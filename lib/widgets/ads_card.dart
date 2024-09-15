@@ -4,8 +4,7 @@ class AdsCard extends StatelessWidget {
   final String adTitle;
   final Color color;
 
-  const AdsCard({Key? key, required this.adTitle, required this.color})
-      : super(key: key);
+  const AdsCard({super.key, required this.adTitle, required this.color});
 
   @override
   Widget build(BuildContext context) {

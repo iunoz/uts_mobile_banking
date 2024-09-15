@@ -51,9 +51,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                         children: [
                           Expanded(
                             child: ElevatedButton(
-                                onPressed: () {
-                                  print("Kartu hilang dipilih");
-                                },
+                                onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       const Color.fromARGB(255, 177, 235, 229),
@@ -71,9 +69,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: ElevatedButton(
-                              onPressed: () {
-                                print("Kartu rusak dipilih");
-                              },
+                              onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     const Color.fromARGB(255, 177, 235, 229),
@@ -120,7 +116,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                                 color:
                                     Colors.black), // Border untuk area gambar
                             borderRadius: BorderRadius.circular(10),
-                            color: Color.fromARGB(255, 177, 235, 229)),
+                            color: const Color.fromARGB(255, 177, 235, 229)),
                         child: const Center(
                           child:
                               Icon(Icons.image, size: 50, color: Colors.grey),
@@ -135,7 +131,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                     border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -148,26 +144,25 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                       ),
                       const SizedBox(height: 10),
                       Container(
-                          height: 30,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              color: Color.fromARGB(255, 177, 235, 229)),
-                          padding: EdgeInsets.all(
-                              5), //padding biar tulisannya agak tengah (gak mepet border)
-                          child: Text(
-                            "Example: Sumi Bank - Kelapa Gading",
-                            style: TextStyle(fontSize: 14, color: Colors.grey),
-                          ))
+                        height: 30,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: const Color.fromARGB(255, 177, 235, 229)),
+                        padding: const EdgeInsets.all(
+                            5), //padding biar tulisannya agak tengah (gak mepet border)
+                        child: const Text(
+                          "Example: Sumi Bank - Kelapa Gading",
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 20),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      print("Form submitted");
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 177, 235, 229),
                       shape: RoundedRectangleBorder(
@@ -181,7 +176,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
