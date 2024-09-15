@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
+import 'change_pin.dart'; // Import halaman change_pin
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,30 +18,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text("Konfirmasi Logout"),
           content: const Text("Apakah anda ingin melakukan LOG OUT?"),
           actions: [
-            // Tombol Cancel dengan background putih
             TextButton(
               style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(
-                    255, 98, 98, 98), // Background warna putih
-                foregroundColor: Colors.white, // Text warna putih
+                backgroundColor: const Color.fromARGB(255, 98, 98, 98),
+                foregroundColor: Colors.white,
               ),
               child: const Text("Cancel"),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
               },
             ),
-            // Tombol Submit dengan background warna merah
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Background warna merah
-                foregroundColor: Colors.white, // Text warna putih
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
               ),
               child: const Text("Submit"),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
-                // Tambahkan logika untuk logout atau navigasi ke halaman logout
-                Navigator.pushNamed(
-                    context, '/logout'); // Contoh navigasi ke halaman logout
+                Navigator.of(context).pop();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  (Route<dynamic> route) => false,
+                );
               },
             ),
           ],
@@ -59,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              _showLogoutConfirmationDialog(); // Tampilkan dialog saat tombol ditekan
+              _showLogoutConfirmationDialog();
             },
           ),
         ],
@@ -123,83 +124,76 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.teal.withOpacity(0.2),
-                            border: Border.all(
-                              color: Colors.teal,
-                              width: 1,
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.attach_money),
-                            color: Colors.teal,
-                            iconSize: 24,
-                            padding: const EdgeInsets.all(12),
-                          ),
-                        ),
-                        const Text('Set Limit'),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.red.withOpacity(0.2),
-                            border: Border.all(
-                              color: Colors.red,
-                              width: 1,
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.block),
-                            color: Colors.red,
-                            iconSize: 24,
-                            padding: const EdgeInsets.all(12),
-                          ),
-                        ),
-                        const Text('Block Card'),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.blue.withOpacity(0.2),
-                            border: Border.all(
-                              color: Colors.blue,
-                              width: 1,
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.credit_card),
-                            color: Colors.blue,
-                            iconSize: 24,
-                            padding: const EdgeInsets.all(12),
-                          ),
-                        ),
-                        const Text('Change Card'),
-                      ],
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _buildActionColumn(
+                    icon: Icons.attach_money,
+                    label: "Set Limit",
+                    color: Colors.teal,
+                    onTap: () {},
+                  ),
+                  _buildActionColumn(
+                    icon: Icons.block,
+                    label: "Block Card",
+                    color: Colors.red,
+                    onTap: () {},
+                  ),
+                  _buildActionColumn(
+                    icon: Icons.credit_card,
+                    label: "Change Card",
+                    color: Colors.blue,
+                    onTap: () {},
+                  ),
+                  _buildActionColumn(
+                    icon: Icons.lock,
+                    label: "Change Pin",
+                    color: Colors.yellow,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ChangePinScreen()),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Column _buildActionColumn({
+    required IconData icon,
+    required String label,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(8),
+            color: color.withOpacity(0.2),
+            border: Border.all(
+              color: color,
+              width: 1,
+            ),
+          ),
+          child: IconButton(
+            onPressed: onTap,
+            icon: Icon(icon),
+            color: color,
+            iconSize: 24,
+            padding: const EdgeInsets.all(12),
+          ),
+        ),
+        const SizedBox(height: 5),
+        Text(label),
+      ],
     );
   }
 }
