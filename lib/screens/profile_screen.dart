@@ -8,6 +8,44 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  void _showLogoutConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Konfirmasi Logout"),
+          content: const Text("Apakah anda ingin melakukan LOG OUT?"),
+          actions: [
+            // Tombol Cancel dengan background putih
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 98, 98, 98), // Background warna putih
+                foregroundColor: Colors.white, // Text warna putih            
+              ),
+              child: const Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop(); // Tutup dialog
+              },
+            ),
+            // Tombol Submit dengan background warna merah
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red, // Background warna merah
+                foregroundColor: Colors.white, // Text warna putih
+              ),
+              child: const Text("Submit"),
+              onPressed: () {
+                Navigator.of(context).pop(); // Tutup dialog
+                // Tambahkan logika untuk logout atau navigasi ke halaman logout
+                Navigator.pushNamed(context, '/logout'); // Contoh navigasi ke halaman logout
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +53,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('Profile'),
         centerTitle: true,
         backgroundColor: const Color(0xFF7EBDA6),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              _showLogoutConfirmationDialog(); // Tampilkan dialog saat tombol ditekan
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -75,13 +121,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // Action buttons
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    // Set Limit Button
                     Column(
                       children: [
                         Container(
@@ -99,14 +142,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                             icon: const Icon(Icons.attach_money),
                             color: Colors.teal,
-                            iconSize: 24, // Adjust icon size
+                            iconSize: 24,
                             padding: const EdgeInsets.all(12),
                           ),
                         ),
                         const Text('Set Limit'),
                       ],
                     ),
-                    // Block Card Button
                     Column(
                       children: [
                         Container(
@@ -131,7 +173,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Text('Block Card'),
                       ],
                     ),
-                    // Change Card Button
                     Column(
                       children: [
                         Container(
