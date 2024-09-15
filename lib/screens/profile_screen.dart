@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'change_pin.dart'; // Import halaman change_pin
+import 'changecard_screen.dart';
+import 'setlimit_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -69,18 +71,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Card information section
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.teal.shade50,
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Card type
+                    const Text(
+                      "Card Type",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+
+                    // Card name
+                    const Text(
+                      "SIGMA Xpresi",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+
+                    // Card image
+                    const SizedBox(height: 10),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -91,21 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Text(
-                      "Card Type",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "SIGMA Xpresi",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
+                    // Card number
                     const Text(
                       "Card Number",
                       style: TextStyle(
@@ -114,6 +125,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
+
+                    // Card number value
                     const Text(
                       "1234 5678 9123 4567",
                       style: TextStyle(
@@ -123,6 +136,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
+
+              // Actions Row
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -131,19 +146,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.attach_money,
                     label: "Set Limit",
                     color: Colors.teal,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SetLimitScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildActionColumn(
                     icon: Icons.block,
                     label: "Block Card",
                     color: Colors.red,
-                    onTap: () {},
+                    onTap: () {
+                      // Add functionality for blocking card
+                    },
                   ),
                   _buildActionColumn(
                     icon: Icons.credit_card,
                     label: "Change Card",
                     color: Colors.blue,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ChangeCardScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _buildActionColumn(
                     icon: Icons.lock,
@@ -152,7 +183,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const ChangePinScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => const ChangePinScreen(),
+                        ),
                       );
                     },
                   ),
