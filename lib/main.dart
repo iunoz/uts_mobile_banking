@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'screens/changecard_screen.dart'; // Impor ChangeCardScreen
-import 'widgets/custom_button.dart'; // Impor widget tombol CustomButton
+import 'screens/changecard_screen.dart';
+import 'widgets/custom_button.dart';
+import 'screens/notification_screen.dart';
 import 'screens/profile_screen.dart';
 
 void main() {
@@ -36,7 +37,28 @@ class MyHomePage extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: CustomButton(), // Memanggil widget tombol dari CustomButton
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Tombol untuk ChangeCardScreen
+            CustomButton(
+              buttonText: 'Change Card Screen',
+              destination: ChangeCardScreen(),
+            ),
+            SizedBox(height: 20), // jarak antar tombol
+            // Tombol untuk NotificationScreen
+            CustomButton(
+              buttonText: 'Notifications',
+              destination: NotificationScreen(),
+            ),
+            SizedBox(height: 20),
+            // Tombol untuk ProfileScreen
+            CustomButton(
+              buttonText: 'Profile',
+              destination: ProfileScreen(),
+            ),
+          ],
+        ),
       ),
     );
   }
