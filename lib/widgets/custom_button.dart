@@ -4,6 +4,9 @@ class CustomButton extends StatelessWidget {
   final String buttonText;
   final Widget destination;
   final Color color;
+  final IconData? icon; //opsional
+  final Color? textColor;
+  final Color? iconColor;
   final bool usePushReplacement;
   final bool usePushAndRemoveUntil;
 
@@ -11,6 +14,9 @@ class CustomButton extends StatelessWidget {
     required this.buttonText,
     required this.destination,
     required this.color,
+    this.icon, //opsional
+    this.textColor,
+    this.iconColor,
     this.usePushReplacement = false,
     this.usePushAndRemoveUntil = false,
     super.key,
@@ -41,7 +47,24 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
       ),
-      child: Text(buttonText),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (icon != null)
+            Icon(
+              icon,
+              size: 36,
+              color: iconColor ?? Colors.black,
+            ),
+          Text(
+            buttonText,
+            style: TextStyle(
+              fontSize: 14,
+              color: textColor ?? Colors.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

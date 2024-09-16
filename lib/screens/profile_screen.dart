@@ -3,6 +3,10 @@ import 'login_screen.dart';
 import 'change_pin.dart'; // Import halaman change_pin
 import 'changecard_screen.dart';
 import 'setlimit_screen.dart';
+import '../widgets/custom_button.dart';
+import 'qris_screen.dart';
+import 'notification_screen.dart';
+import 'home_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -193,6 +197,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        color: Colors.teal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomButton(
+              buttonText: 'Home',
+              destination: HomeScreen(),
+              color: Colors.teal,
+              icon: Icons.home,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+            CustomButton(
+              buttonText: 'QRIS',
+              destination: QrisScreen(),
+              color: Colors.teal,
+              icon: Icons.qr_code,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+            CustomButton(
+              buttonText: 'Notif',
+              destination: NotificationScreen(),
+              color: Colors.teal,
+              icon: Icons.notifications,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+            CustomButton(
+              buttonText: 'Profile',
+              destination: ProfileScreen(),
+              color: Colors.teal,
+              icon: Icons.account_circle_rounded,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+          ],
         ),
       ),
     );

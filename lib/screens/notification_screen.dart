@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'qris_screen.dart';
+import 'home_screen.dart';
+import 'profile_screen.dart';
+import '../widgets/custom_button.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -32,6 +36,50 @@ class NotificationScreen extends StatelessWidget {
               "Admin fee deduction of 15,000 applied to IRENE CARL LEWIS",
               Colors.yellow[100]!),
         ],
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        color: Colors.teal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CustomButton(
+              buttonText: 'Home',
+              destination: HomeScreen(),
+              color: Colors.teal,
+              icon: Icons.home,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+            CustomButton(
+              buttonText: 'QRIS',
+              destination: QrisScreen(),
+              color: Colors.teal,
+              icon: Icons.qr_code,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+            CustomButton(
+              buttonText: 'Notif',
+              destination: NotificationScreen(),
+              color: Colors.teal,
+              icon: Icons.notifications,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+            CustomButton(
+              buttonText: 'Profile',
+              destination: ProfileScreen(),
+              color: Colors.teal,
+              icon: Icons.account_circle_rounded,
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              usePushReplacement: true,
+            ),
+          ],
+        ),
       ),
     );
   }
