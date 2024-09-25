@@ -117,7 +117,7 @@ class HomeScreenState extends State<HomeScreen> {
                   // Tombol untuk NotificationScreen
                   CustomButton(
                     buttonText: 'Transfer History',
-                    destination: TransferhistoryScreen(),
+                    destination: TransferHistoryScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.history,
                   ),
