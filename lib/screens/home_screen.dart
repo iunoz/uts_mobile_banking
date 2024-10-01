@@ -136,7 +136,7 @@ class HomeScreenState extends State<HomeScreen> {
                   ),
                   CustomButton(
                     buttonText: 'Virtual Account',
-                    destination: VirtualaccountScreen(),
+                    destination: VirtualAccountScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.account_box,
                   ),
