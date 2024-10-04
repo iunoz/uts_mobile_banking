@@ -24,7 +24,7 @@ class VirtualAccountScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Text(
-              'Pilih Kode Virtual Account:',
+              'Select Virtual Account Code:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
@@ -91,7 +91,7 @@ class VirtualAccountTile extends StatelessWidget {
           institutionName,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        subtitle: Text('Kode Virtual Account: $virtualAccountCode'),
+        subtitle: Text('Virtual Account Code: $virtualAccountCode'),
         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.teal),
         onTap: () {
           // Ketika dipilih, pengguna akan diarahkan ke halaman input nomor VA
@@ -127,7 +127,7 @@ class VirtualAccountDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Bayar $institutionName",
+          "Pay $institutionName",
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -143,7 +143,7 @@ class VirtualAccountDetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Masukkan Nomor Virtual Account untuk $institutionName',
+              'Enter Virtual Account Number for $institutionName',
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
@@ -152,8 +152,8 @@ class VirtualAccountDetailScreen extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Nomor Virtual Account',
-                hintText: 'Masukkan nomor VA yang sesuai',
+                labelText: 'Virtual Account Number',
+                hintText: 'Enter the correct VA number',
               ),
             ),
             const SizedBox(height: 20),
@@ -169,21 +169,21 @@ class VirtualAccountDetailScreen extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: const Text('Konfirmasi Pembayaran'),
+                      title: const Text('Payment Confirmation'),
                       content: Text(
-                        'Anda akan melakukan pembayaran ke $institutionName dengan kode VA: $virtualAccountCode dan nomor VA: $vaNumber',
+                        'You are about to make a payment to $institutionName with VA code: $virtualAccountCode and VA number: $vaNumber',
                       ),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: const Text('Batal'),
+                          child: const Text('Cancel'),
                         ),
                         TextButton(
                           onPressed: () {
                             // Lanjutkan pembayaran
                             Navigator.pop(context);
                           },
-                          child: const Text('Lanjutkan'),
+                          child: const Text('Continue'),
                         ),
                       ],
                     ),
@@ -192,14 +192,14 @@ class VirtualAccountDetailScreen extends StatelessWidget {
                   // Jika VA number kosong, berikan feedback kepada pengguna
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('Nomor Virtual Account tidak boleh kosong'),
+                      content: Text('Virtual Account Number cannot be empty'),
                       backgroundColor: Colors.red,
                     ),
                   );
                 }
               },
               child: const Text(
-                'Lanjutkan Pembayaran',
+                'Continue Payment',
                 style: TextStyle(color: Colors.white),
               ),
             ),

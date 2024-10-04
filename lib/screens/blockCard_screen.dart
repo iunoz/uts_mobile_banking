@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
 
 class BlockCardScreen extends StatelessWidget {
-  const BlockCardScreen({Key? key}) : super(key: key);
+  const BlockCardScreen({super.key});
 
-  void _showBlockConfirmationDialog(BuildContext context) {
+  void showBlockConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Konfirmasi Blokir Kartu"),
+          title: const Text("Card Block Confirmation"),
           content: const Text(
-              "Apakah Anda yakin ingin memblokir kartu ini? Tindakan ini tidak dapat dibatalkan."),
+              "Are you sure you want to block this card? This action cannot be undone."),
           actions: [
             TextButton(
               child: const Text("Cancel"),
@@ -21,10 +22,16 @@ class BlockCardScreen extends StatelessWidget {
             ElevatedButton(
               child: const Text("Confirm"),
               onPressed: () {
-                // Tambahkan logika untuk memblokir kartu
+                // logika untuk memblokir kartu
                 Navigator.of(context).pop();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Kartu berhasil diblokir')),
+                  const SnackBar(
+                      content: Text('Card has been successfully blocked')),
+                );
+
+                // Pindah  ke halaman login
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
             ),
@@ -38,7 +45,7 @@ class BlockCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Blokir Kartu'),
+        title: const Text('Block Card'),
         backgroundColor: const Color(0xFF7EBDA6),
       ),
       body: Padding(
@@ -48,21 +55,21 @@ class BlockCardScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Text(
-              "Jika kartu Anda hilang atau ada aktivitas mencurigakan, Anda dapat memblokir kartu Anda di sini.",
+              "If your card is lost or there is suspicious activity, you can block your card here",
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                _showBlockConfirmationDialog(context);
+                showBlockConfirmationDialog(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
               child: const Text(
-                'Blokir Kartu',
+                'Block Card',
                 style: TextStyle(fontSize: 18),
               ),
             ),
