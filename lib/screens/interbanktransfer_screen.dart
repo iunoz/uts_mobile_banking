@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class InterbanktransferScreen extends StatefulWidget {
   const InterbanktransferScreen({super.key});
@@ -28,11 +29,16 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
     'UOB',
   ];
 
+  final NumberFormat _currencyFormat = NumberFormat.currency(
+    locale: 'id_ID',
+    symbol: 'Rp ',
+    decimalDigits: 0,
+  );
+
   void _submitTransfer() {
     final accountNumber = _accountController.text;
-    final amount = _amountController.text;
+    final amountText = _amountController.text;
 
-    // Validation checks
     if (_selectedBank == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -49,7 +55,7 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
       );
       return;
     }
-    if (amount.isEmpty) {
+    if (amountText.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please enter the amount.'),
@@ -58,10 +64,12 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
       return;
     }
 
+    final double amount = double.tryParse(amountText) ?? 0;
+    final formattedAmount = _currencyFormat.format(amount);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-            'Transfer of Rp$amount to account $accountNumber at $_selectedBank successful.'),
+            'Transfer of Rp$formattedAmount to account $accountNumber at $_selectedBank successful.'),
       ),
     );
 

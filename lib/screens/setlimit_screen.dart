@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uts_mobile_banking/widgets/slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 class SetLimitScreen extends StatefulWidget {
   const SetLimitScreen({super.key});
@@ -13,6 +15,33 @@ class SetLimitPageState extends State<SetLimitScreen> {
   double _sumiTransferLimit = 100000;
   double _interbankLimit = 100000;
   double _debitLimit = 100000;
+
+  final NumberFormat _currencyFormat =
+      NumberFormat.currency(locale: 'id_ID', symbol: 'Rp', decimalDigits: 0);
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLimits();
+  }
+
+  Future<void> _loadLimits() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _cashLimit = prefs.getDouble('cashLimit') ?? 100000;
+      _sumiTransferLimit = prefs.getDouble('sumiTransferLimit') ?? 100000;
+      _interbankLimit = prefs.getDouble('interbankLimit') ?? 100000;
+      _debitLimit = prefs.getDouble('debitLimit') ?? 100000;
+    });
+  }
+
+  Future<void> _saveLimits() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('cashLimit', _cashLimit);
+    await prefs.setDouble('sumiTransferLimit', _sumiTransferLimit);
+    await prefs.setDouble('interbankLimit', _interbankLimit);
+    await prefs.setDouble('debitLimit', _debitLimit);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +101,13 @@ class SetLimitPageState extends State<SetLimitScreen> {
                       const Color(0xFF7EBDA6), // Set the text color
                 ),
                 onPressed: () {
+                  _saveLimits();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(
-                        'Limits set: \nCash Withdrawal Limit: Rp ${_cashLimit.round()}\nSUMI Inter-Account Transfer Limit: Rp ${_sumiTransferLimit.round()}\nInterbank Limit: Rp ${_interbankLimit.round()}\nDebit Transaction Limit: Rp ${_debitLimit.round()}'),
+                    content: Text('Limits set: \n'
+                        'Cash Withdrawal Limit: ${_currencyFormat.format(_cashLimit)}\n'
+                        'SUMI Inter-Account Transfer Limit: ${_currencyFormat.format(_sumiTransferLimit)}\n'
+                        'Interbank Limit: ${_currencyFormat.format(_interbankLimit)}\n'
+                        'Debit Transaction Limit: ${_currencyFormat.format(_debitLimit)}'),
                   ));
                 },
                 child: const Text('Set Limit'),
