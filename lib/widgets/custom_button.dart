@@ -46,6 +46,9 @@ class CustomButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero, // Menghilangkan border radius
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +56,7 @@ class CustomButton extends StatelessWidget {
           if (icon != null)
             Icon(
               icon,
-              size: 36,
+              size: 30,
               color: iconColor ?? Colors.black,
             ),
           Text(

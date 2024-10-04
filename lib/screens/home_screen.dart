@@ -77,15 +77,12 @@ class HomeScreenState extends State<HomeScreen> {
                         IconButton(
                           icon: Icon(
                             _isBalanceHidden
-                                ? Icons
-                                    .visibility_off // Show "eye closed" icon if balance is hidden
-                                : Icons
-                                    .visibility, // Show "eye open" icon if balance is visible
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                           ),
                           onPressed: () {
                             setState(() {
-                              _isBalanceHidden =
-                                  !_isBalanceHidden; // Toggle the balance visibility
+                              _isBalanceHidden = !_isBalanceHidden;
                             });
                           },
                         ),
@@ -103,25 +100,22 @@ class HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 15),
             Expanded(
               child: GridView.count(
-                crossAxisCount: 2, //buat 2 kolom
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
+                crossAxisCount: 2,
+                mainAxisSpacing: 16, // jarak antar tombol vertikal
+                crossAxisSpacing: 16, // jarak antar tombol horizontal
                 children: const [
-                  // Tombol untuk ChangeCardScreen
                   CustomButton(
                     buttonText: 'Top Up E-Money',
                     destination: TopupemoneyScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.credit_card_rounded,
                   ),
-                  // Tombol untuk NotificationScreen
                   CustomButton(
                     buttonText: 'Transfer History',
                     destination: TransferHistoryScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.history,
                   ),
-                  // Tombol untuk ProfileScreen
                   CustomButton(
                     buttonText: 'Interbank Transfer',
                     destination: InterbanktransferScreen(),
@@ -129,7 +123,7 @@ class HomeScreenState extends State<HomeScreen> {
                     icon: Icons.account_balance,
                   ),
                   CustomButton(
-                    buttonText: 'Inter-account Transfer',
+                    buttonText: 'Account Transfer',
                     destination: InteraccounttransferScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.balance,
