@@ -53,11 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 5),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                   labelText: "Enter your Email/Phone Number!",
                   filled: true,
-                  fillColor: const Color.fromARGB(255, 192, 248, 214),
+                  fillColor: Color.fromARGB(255, 192, 248, 214),
                 ),
               ),
               const SizedBox(height: 25),
@@ -85,19 +85,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 25),
-              Center(
+              const Center(
                 child: CustomButton(
                   buttonText: 'LOGIN',
-                  destination: const HomeScreen(),
+                  destination: HomeScreen(),
                   color: Colors.greenAccent,
                   usePushReplacement: true,
                 ),
               ),
               const SizedBox(height: 25),
-              Center(
+              const Center(
                 child: CustomButton(
                   buttonText: "Don't Have Any Account? Register",
-                  destination: const RegisterScreen(),
+                  destination: RegisterScreen(),
                   color: Colors.greenAccent,
                   usePushReplacement: false,
                 ),

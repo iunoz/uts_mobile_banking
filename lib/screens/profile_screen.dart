@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_banking/screens/blockCard_screen.dart';
 import 'login_screen.dart';
 import 'change_pin.dart'; // Import halaman change_pin
 import 'changecard_screen.dart';
@@ -164,7 +165,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     label: "Block Card",
                     color: Colors.red,
                     onTap: () {
-                      // Add functionality for blocking card
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BlockCardScreen(),
+                        ),
+                      );
                     },
                   ),
                   _buildActionColumn(

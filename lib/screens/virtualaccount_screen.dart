@@ -76,14 +76,14 @@ class VirtualAccountTile extends StatelessWidget {
   const VirtualAccountTile({
     required this.institutionName,
     required this.virtualAccountCode,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Icon(
+        leading: const Icon(
           Icons.account_balance_wallet,
           color: Colors.teal,
         ),
@@ -117,12 +117,12 @@ class VirtualAccountDetailScreen extends StatelessWidget {
   const VirtualAccountDetailScreen({
     required this.institutionName,
     required this.virtualAccountCode,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _vaNumberController = TextEditingController();
+    final TextEditingController vaNumberController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -148,10 +148,10 @@ class VirtualAccountDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextField(
-              controller: _vaNumberController,
+              controller: vaNumberController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
                 labelText: 'Nomor Virtual Account',
                 hintText: 'Masukkan nomor VA yang sesuai',
               ),
@@ -163,7 +163,7 @@ class VirtualAccountDetailScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
               onPressed: () {
-                String vaNumber = _vaNumberController.text;
+                String vaNumber = vaNumberController.text;
                 if (vaNumber.isNotEmpty) {
                   // Lakukan proses pembayaran di sini
                   showDialog(
