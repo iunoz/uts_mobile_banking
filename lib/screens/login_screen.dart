@@ -89,7 +89,7 @@ class LoginScreenState extends State<LoginScreen> {
               const Center(
                 child: CustomButton(
                   buttonText: 'LOGIN',
-                  destination: HomeScreen(),
+                  destination: HomeScreen(showAnimation: true),
                   color: Colors.greenAccent,
                   usePushReplacement: true,
                   borderRadius: 18,

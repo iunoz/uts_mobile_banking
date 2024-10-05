@@ -52,6 +52,7 @@ class NotificationScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
@@ -63,6 +64,7 @@ class NotificationScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
@@ -73,6 +75,7 @@ class NotificationScreen extends StatelessWidget {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              iconSize: 22,
               borderRadius: 18,
             ),
             CustomButton(
@@ -84,6 +87,7 @@ class NotificationScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideLeft,
             ),
           ],
