@@ -43,6 +43,31 @@ class SetLimitPageState extends State<SetLimitScreen> {
     await prefs.setDouble('debitLimit', _debitLimit);
   }
 
+  void _showLimitsDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Limits Set'),
+          content: Text(
+            'Cash Withdrawal Limit: ${_currencyFormat.format(_cashLimit)}\n'
+            'SUMI Inter-Account Transfer Limit: ${_currencyFormat.format(_sumiTransferLimit)}\n'
+            'Interbank Limit: ${_currencyFormat.format(_interbankLimit)}\n'
+            'Debit Transaction Limit: ${_currencyFormat.format(_debitLimit)}',
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,18 +122,11 @@ class SetLimitPageState extends State<SetLimitScreen> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor:
-                      const Color(0xFF7EBDA6), // Set the text color
+                  backgroundColor: const Color(0xFF7EBDA6),
                 ),
                 onPressed: () {
                   _saveLimits();
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Limits set: \n'
-                        'Cash Withdrawal Limit: ${_currencyFormat.format(_cashLimit)}\n'
-                        'SUMI Inter-Account Transfer Limit: ${_currencyFormat.format(_sumiTransferLimit)}\n'
-                        'Interbank Limit: ${_currencyFormat.format(_interbankLimit)}\n'
-                        'Debit Transaction Limit: ${_currencyFormat.format(_debitLimit)}'),
-                  ));
+                  _showLimitsDialog();
                 },
                 child: const Text('Set Limit'),
               ),

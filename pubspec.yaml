@@ -37,6 +37,17 @@ flutter:
     - assets/images/linkaja.png
     - assets/images/etoll.png
     - assets/images/flazz.png
+    - assets/images/bca.jpg
+    - assets/images/bri.jpg
+    - assets/images/cimbniaga.jpg
+    - assets/images/citibank.jpg
+    - assets/images/danamon.jpg
+    - assets/images/mandiri.jpg
+    - assets/images/mega.jpg
+    - assets/images/panin.jpg
+    - assets/images/permata.jpg
+    - assets/images/seabank.jpg
+    - assets/images/uob.jpg
 
 flutter_native_splash:
   color: "#FFFFFF" # Warna splash screen

@@ -61,9 +61,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Text(
+          "Home Screen",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF7EBDA6),
+        backgroundColor: Color(0xFF7EBDA6),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -146,59 +153,70 @@ class _ProfileScreenState extends State<ProfileScreen> {
               // Actions Row
               const SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildActionColumn(
-                    icon: Icons.attach_money,
-                    label: "Set Limit",
-                    color: Colors.teal,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SetLimitScreen(),
-                        ),
-                      );
-                    },
+                  Expanded(
+                    child: _buildActionColumn(
+                      icon: Icons.attach_money,
+                      label: "Set\nLimit",
+                      color: Color(0xFF02854f),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SetLimitScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  _buildActionColumn(
-                    icon: Icons.block,
-                    label: "Block Card",
-                    color: Colors.red,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const BlockCardScreen(),
-                        ),
-                      );
-                    },
+                  const SizedBox(width: 16), // Space between columns
+                  Expanded(
+                    child: _buildActionColumn(
+                      icon: Icons.block,
+                      label: "Block\nCard",
+                      color: Color(0xFFd8210b),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BlockCardScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  _buildActionColumn(
-                    icon: Icons.credit_card,
-                    label: "Change Card",
-                    color: Colors.blue,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ChangeCardScreen(),
-                        ),
-                      );
-                    },
+                  const SizedBox(width: 16), // Space between columns
+                  Expanded(
+                    child: _buildActionColumn(
+                      icon: Icons.credit_card,
+                      label: "Change Card",
+                      color: Color(0xFFd99a3d),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChangeCardScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  _buildActionColumn(
-                    icon: Icons.lock,
-                    label: "Change Pin",
-                    color: Colors.yellow,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ChangePinScreen(),
-                        ),
-                      );
-                    },
+                  const SizedBox(width: 16), // Space between columns
+                  Expanded(
+                    child: _buildActionColumn(
+                      icon: Icons.lock,
+                      label: "Change Pin",
+                      color: Color(0xFF009baa),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChangePinScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -207,14 +225,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       bottomNavigationBar: const BottomAppBar(
-        color: Colors.teal,
+        color: Color(0xFF7EBDA6),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomButton(
               buttonText: 'Home',
               destination: HomeScreen(),
-              color: Colors.teal,
+              color: Color(0xFF7EBDA6),
               icon: Icons.home,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -225,7 +243,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             CustomButton(
               buttonText: 'QRIS',
               destination: QrisScreen(),
-              color: Colors.teal,
+              color: Color(0xFF7EBDA6),
               icon: Icons.qr_code,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -236,7 +254,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             CustomButton(
               buttonText: 'Notif',
               destination: NotificationScreen(),
-              color: Colors.teal,
+              color: Color(0xFF7EBDA6),
               icon: Icons.notifications,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -247,7 +265,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             CustomButton(
               buttonText: 'Profile',
               destination: ProfileScreen(),
-              color: Colors.teal,
+              color: Color(0xFF7EBDA6),
               icon: Icons.account_circle_rounded,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -287,7 +305,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         const SizedBox(height: 5),
-        Text(label),
+        Text(
+          label,
+          style: TextStyle(
+            color: color,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }
