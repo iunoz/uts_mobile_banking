@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uts_mobile_banking/screens/blockCard_screen.dart';
+import 'package:uts_mobile_banking/widgets/page_transition.dart';
 import 'login_screen.dart';
 import 'change_pin.dart'; // Import halaman change_pin
 import 'changecard_screen.dart';
@@ -218,6 +219,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
+              transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
               buttonText: 'QRIS',
@@ -227,6 +230,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
+              transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
               buttonText: 'Notif',
@@ -236,6 +241,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
+              transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
               buttonText: 'Profile',
@@ -245,6 +252,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
             ),
           ],
         ),

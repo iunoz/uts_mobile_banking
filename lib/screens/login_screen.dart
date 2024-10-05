@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_banking/widgets/page_transition.dart';
 import 'register_screen.dart';
 import 'home_screen.dart';
 import '../widgets/custom_button.dart';
@@ -91,6 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   destination: HomeScreen(),
                   color: Colors.greenAccent,
                   usePushReplacement: true,
+                  borderRadius: 18,
+                  transitionType: PageTransitionType.fade,
                 ),
               ),
               const SizedBox(height: 25),
@@ -100,6 +103,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   destination: RegisterScreen(),
                   color: Colors.greenAccent,
                   usePushReplacement: false,
+                  borderRadius: 18,
+                  transitionType: PageTransitionType.slideLeft,
                 ),
               ),
             ],

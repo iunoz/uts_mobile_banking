@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_banking/widgets/page_transition.dart';
 import '../widgets/custom_button.dart';
 import 'profile_screen.dart';
 import 'notification_screen.dart';
@@ -34,6 +35,8 @@ class QrisScreen extends StatelessWidget {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
+              transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
               buttonText: 'QRIS',
@@ -43,6 +46,7 @@ class QrisScreen extends StatelessWidget {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
             ),
             CustomButton(
               buttonText: 'Notif',
@@ -52,6 +56,8 @@ class QrisScreen extends StatelessWidget {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
+              transitionType: PageTransitionType.slideLeft,
             ),
             CustomButton(
               buttonText: 'Profile',
@@ -61,6 +67,8 @@ class QrisScreen extends StatelessWidget {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 18,
+              transitionType: PageTransitionType.slideLeft,
             ),
           ],
         ),
