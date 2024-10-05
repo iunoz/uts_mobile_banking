@@ -38,6 +38,11 @@ flutter:
     - assets/images/linkaja.png
     - assets/images/etoll.png
     - assets/images/flazz.png
+    - assets/images/background2.jpg
+    - assets/animations/confetti.json
+
+
+
 
 flutter_native_splash:
   color: "#FFFFFF" # Warna splash screen
