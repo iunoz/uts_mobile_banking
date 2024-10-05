@@ -11,6 +11,7 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF7EBDA6),
         title: const Text('Notification'),
       ),
       body: ListView(
@@ -18,24 +19,36 @@ class NotificationScreen extends StatelessWidget {
         children: [
           _buildNotificationItem(
               "09/09/24 15:30",
-              "Funds received through BI-Fast service in the amount of 50,000,000 from JAKE SIM",
-              Colors.green[100]!),
-          _buildNotificationItem(
-              "09/09/24 15:30",
-              "Transfer successfully made to the account of JENO LEE in the amount of 200,000,000",
+              "Request to change card due to losing card has been sent. Please wait for futher information",
               Colors.red[100]!),
           _buildNotificationItem(
               "09/09/24 15:30",
-              "Transfer successfully made to the account of KAMARI in the amount of 10,000",
+              "Terms and condition update due to security",
               Colors.orange[100]!),
           _buildNotificationItem(
               "09/09/24 15:30",
-              "Transfer successfully made to the account of KAMARI in the amount of 10,000",
+              "Update your application to improve service and security",
               Colors.orange[100]!),
+          _buildNotificationItem(
+              "09/09/24 15:30",
+              "Exciting promo! Enjoy Pizza Hut for only 150 thousand using your debit card.",
+              Colors.green[100]!),
           _buildNotificationItem(
               "09/09/24 15:30",
               "Admin fee deduction of 15,000 applied to IRENE CARL LEWIS",
               Colors.yellow[100]!),
+          _buildNotificationItem(
+              "09/09/24 15:30",
+              "Buy 1 Get 1 with BCA debit card at Chatime, available for all variants and sizes",
+              Colors.green[100]!),
+          _buildNotificationItem(
+              "09/09/24 15:30",
+              "Register now with an insurance agent from Sumi Bank",
+              Colors.green[100]!),
+          _buildNotificationItem(
+              "09/09/24 15:30",
+              "Holiday promo at Ayana Resort using debit card.",
+              Colors.green[100]!),
         ],
       ),
       bottomNavigationBar: const BottomAppBar(
