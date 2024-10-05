@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ChangeCardScreen extends StatefulWidget {
   const ChangeCardScreen({super.key});
@@ -8,6 +10,113 @@ class ChangeCardScreen extends StatefulWidget {
 }
 
 class _ChangeCardScreenState extends State<ChangeCardScreen> {
+  File? _selectedImage; // variabel buat nyimpen gambar yang dimasukin user
+  final ImagePicker _picker = ImagePicker();
+  final TextEditingController _nearestBankController = TextEditingController();
+
+  String? _selectedReason;
+  bool _isDamagedCardSelected = false;
+
+  Future<void> _pickImage() async {
+    if (_selectedReason == null) {
+      _showAlertDialog(
+          'Can Not Proccess', 'Please select a reason before uploading image');
+      return;
+    }
+
+    if (!_isDamagedCardSelected) {
+      _showAlertDialog('Can Not Proccess',
+          'Image upload is only available for damaged card selection');
+      return;
+    }
+
+    final XFile? pickedImage =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      setState(() {
+        _selectedImage =
+            File(pickedImage.path); // masukin image yg udh dipilih user
+      });
+    }
+  }
+
+  void _removeImage() {
+    setState(() {
+      _selectedImage =
+          null; // kalo user pencet tanda silang, maka gambar akan hilang
+    });
+  }
+
+  void _submitForm() {
+    if (_selectedReason == null) {
+      _showAlertDialog('Can Not Proccess', 'Please Select the Reason');
+      return;
+    }
+
+    if (_isDamagedCardSelected && _selectedImage == null) {
+      _showAlertDialog(
+          'Can Not Proccess', 'Please Upload proof for damaged card');
+      return;
+    }
+
+    if (_nearestBankController.text.isEmpty) {
+      _showAlertDialog('Error', 'Please enter the nearest bank in your area.');
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Confirm Submission"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("Reason: $_selectedReason"),
+              Text("Nearest Bank: ${_nearestBankController.text}"),
+            ],
+          ),
+          actions: [
+            TextButton(
+              child: const Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Confirm"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _showAlertDialog('Success',
+                    'Request submitted successfully! Your request will be stored in notifications; please wait for further notifications from the nearest bank branch. thank you!');
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showAlertDialog(String title, String content) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(content),
+          actions: [
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +130,13 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
           )
         ],
       ),
-      body: SafeArea(
-        child: Container(
-          color:
-              const Color.fromARGB(255, 172, 223, 218), // Warna latar belakang
+      body: Container(
+        height: MediaQuery.of(context)
+            .size
+            .height, // biar full screen soalnya dia gamau full screen
+        width: MediaQuery.of(context).size.width,
+        color: Colors.white,
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -32,12 +144,10 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Colors.black), // Border untuk kotak
-                    borderRadius: BorderRadius.circular(
-                        10), // Membuat kotak jadi melengkung
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: const EdgeInsets.all(16.0), // Padding di dalam kotak
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -51,14 +161,26 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                         children: [
                           Expanded(
                             child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedReason = "Lost Card";
+                                    _isDamagedCardSelected = false;
+                                    _selectedImage = null;
+                                  });
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       const Color.fromARGB(255, 177, 235, 229),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
-                                    side: const BorderSide(
-                                        color: Colors.black, width: 1),
+                                    side: BorderSide(
+                                      color: _selectedReason == "Lost Card"
+                                          ? Colors
+                                              .black // kalo dipilih bordernya warna hitam
+                                          : const Color.fromARGB(
+                                              255, 172, 223, 218),
+                                      width: 1,
+                                    ),
                                   ),
                                 ),
                                 child: const Text(
@@ -69,14 +191,24 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  _selectedReason = "Damaged Card";
+                                  _isDamagedCardSelected = true;
+                                });
+                              },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
                                     const Color.fromARGB(255, 177, 235, 229),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  side: const BorderSide(
-                                      color: Colors.black, width: 1),
+                                  side: BorderSide(
+                                    color: _selectedReason == "Damaged Card"
+                                        ? Colors.black
+                                        : const Color.fromARGB(
+                                            255, 172, 223, 218),
+                                    width: 1,
+                                  ),
                                 ),
                               ),
                               child: const Text(
@@ -91,38 +223,77 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black), // Border untuk kotak luar
-                    borderRadius:
-                        BorderRadius.circular(10), // Membuat sudut melengkung
-                  ),
-                  padding: const EdgeInsets.all(16.0), // Padding di dalam kotak
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Upload proof of damaged card:",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: _pickImage,
+                  child: AbsorbPointer(
+                    absorbing: !_isDamagedCardSelected,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: _isDamagedCardSelected
+                                ? Colors.black
+                                : Colors.grey),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      const SizedBox(height: 10),
-                      Container(
-                        height: 150,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color:
-                                    Colors.black), // Border untuk area gambar
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromARGB(255, 177, 235, 229)),
-                        child: const Center(
-                          child:
-                              Icon(Icons.image, size: 50, color: Colors.grey),
-                        ),
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Upload proof of damaged card:",
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            height: 150,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: _isDamagedCardSelected
+                                      ? Colors.black
+                                      : Colors.grey),
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color.fromARGB(255, 177, 235, 229),
+                            ),
+                            child: Stack(
+                              children: [
+                                _selectedImage != null
+                                    ? Image.file(
+                                        _selectedImage!,
+                                        fit: BoxFit.cover,
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                      )
+                                    : const Center(
+                                        child: Icon(Icons.image,
+                                            size: 50, color: Colors.grey),
+                                      ),
+                                if (_selectedImage != null)
+                                  Positioned(
+                                    top: 5,
+                                    right: 5,
+                                    child: GestureDetector(
+                                      onTap: _removeImage,
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          color: Colors.black54,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const Icon(
+                                          Icons.close,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -143,17 +314,18 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                             color: Colors.black),
                       ),
                       const SizedBox(height: 10),
-                      Container(
-                        height: 30,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            color: const Color.fromARGB(255, 177, 235, 229)),
-                        padding: const EdgeInsets.all(
-                            5), //padding biar tulisannya agak tengah (gak mepet border)
-                        child: const Text(
-                          "Example: Sumi Bank - Kelapa Gading",
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                      TextField(
+                        controller:
+                            _nearestBankController, // controller buat cek apakah bank sudah diisi
+                        decoration: InputDecoration(
+                          hintText: "Example: Sumi Bank - Kelapa Gading",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(color: Colors.black),
+                          ),
+                          filled: true,
+                          fillColor: const Color.fromARGB(255, 177, 235, 229),
+                          contentPadding: const EdgeInsets.all(10),
                         ),
                       ),
                     ],
@@ -162,7 +334,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                 const SizedBox(height: 20),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: _submitForm,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 177, 235, 229),
                       shape: RoundedRectangleBorder(
@@ -174,35 +346,6 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(backgroundColor: Colors.green, radius: 5),
-                        SizedBox(width: 5),
-                        Text("Validation accepted"),
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        CircleAvatar(backgroundColor: Colors.red, radius: 5),
-                        SizedBox(width: 5),
-                        Text("Validation rejected"),
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        CircleAvatar(backgroundColor: Colors.yellow, radius: 5),
-                        SizedBox(width: 5),
-                        Text("Validation rejected"),
-                      ],
-                    ),
-                  ],
                 ),
               ],
             ),
