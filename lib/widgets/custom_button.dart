@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'page_transition.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
@@ -7,6 +8,9 @@ class CustomButton extends StatelessWidget {
   final IconData? icon; //opsional
   final Color? textColor;
   final Color? iconColor;
+  final double? borderRadius;
+  final VoidCallback? customNavigation;
+  final PageTransitionType? transitionType;
   final bool usePushReplacement;
   final bool usePushAndRemoveUntil;
 
@@ -17,6 +21,9 @@ class CustomButton extends StatelessWidget {
     this.icon, //opsional
     this.textColor,
     this.iconColor,
+    this.borderRadius,
+    this.customNavigation,
+    this.transitionType,
     this.usePushReplacement = false,
     this.usePushAndRemoveUntil = false,
     super.key,
@@ -25,29 +32,25 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        if (usePushAndRemoveUntil) {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => destination),
-            (Route<dynamic> route) => false, //hapus semua routes sebelumnya
-          );
-        } else if (usePushReplacement) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => destination),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => destination),
-          );
-        }
-      },
+      onPressed: customNavigation ??
+          () {
+            Route route = _buildPageRoute(context, destination);
+            if (usePushAndRemoveUntil) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                route,
+                (Route<dynamic> route) => false, //hapus semua routes sebelumnya
+              );
+            } else if (usePushReplacement) {
+              Navigator.pushReplacement(context, route);
+            } else {
+              Navigator.push(context, route);
+            }
+          },
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero, // Menghilangkan border radius
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius ?? 0),
         ),
       ),
       child: Column(
@@ -69,5 +72,17 @@ class CustomButton extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  //fungsi untuk membuat transisi halaman berdasarkan `transitionType`
+  Route _buildPageRoute(BuildContext context, Widget page) {
+    if (transitionType != null) {
+      return PageTransition(
+        page: page,
+        transitionType: transitionType!, //menggunakan transisi yang dipilih
+      );
+    } else {
+      return MaterialPageRoute(builder: (context) => page); //transisi default
+    }
   }
 }

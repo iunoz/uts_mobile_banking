@@ -6,6 +6,7 @@ import 'package:uts_mobile_banking/screens/qris_screen.dart';
 import 'package:uts_mobile_banking/screens/topupemoney_screen.dart';
 import 'package:uts_mobile_banking/screens/transferhistory_screen.dart';
 import 'package:uts_mobile_banking/screens/virtualaccount_screen.dart';
+import 'package:uts_mobile_banking/widgets/page_transition.dart';
 import '../widgets/custom_button.dart';
 import 'notification_screen.dart';
 import 'profile_screen.dart';
@@ -44,7 +45,7 @@ class HomeScreenState extends State<HomeScreen> {
             Card(
               color: const Color.fromARGB(255, 249, 234, 234),
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -52,20 +53,20 @@ class HomeScreenState extends State<HomeScreen> {
                       'Welcome Back,',
                       style: TextStyle(fontSize: 18),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 6),
                     const Text(
                       'Gregorius Nathanyel Benedict',
                       style: TextStyle(fontSize: 18),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         const Text(
                           'Rp',
                           style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 22, fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 8),
                         Text(
                           _isBalanceHidden
                               ? '●●●●●●●●' // Hide balance if _isBalanceHidden is true
@@ -92,6 +93,7 @@ class HomeScreenState extends State<HomeScreen> {
                       buttonText: 'More',
                       destination: BalanceScreen(),
                       color: Color.fromARGB(255, 249, 234, 234),
+                      borderRadius: 20,
                     )
                   ],
                 ),
@@ -109,36 +111,48 @@ class HomeScreenState extends State<HomeScreen> {
                     destination: TopupemoneyScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.credit_card_rounded,
+                    borderRadius: 35,
+                    transitionType: PageTransitionType.fade,
                   ),
                   CustomButton(
                     buttonText: 'Transfer History',
                     destination: TransferHistoryScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.history,
+                    borderRadius: 35,
+                    transitionType: PageTransitionType.fade,
                   ),
                   CustomButton(
                     buttonText: 'Interbank Transfer',
                     destination: InterbanktransferScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.account_balance,
+                    borderRadius: 35,
+                    transitionType: PageTransitionType.fade,
                   ),
                   CustomButton(
                     buttonText: 'Account Transfer',
                     destination: InteraccounttransferScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.balance,
+                    borderRadius: 35,
+                    transitionType: PageTransitionType.fade,
                   ),
                   CustomButton(
                     buttonText: 'Virtual Account',
                     destination: VirtualAccountScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.account_box,
+                    borderRadius: 35,
+                    transitionType: PageTransitionType.fade,
                   ),
                   CustomButton(
                     buttonText: 'Bills',
                     destination: BillsScreen(),
                     color: Color.fromARGB(255, 192, 248, 214),
                     icon: Icons.receipt,
+                    borderRadius: 35,
+                    transitionType: PageTransitionType.fade,
                   ),
                 ],
               ),
@@ -159,6 +173,7 @@ class HomeScreenState extends State<HomeScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 15,
             ),
             CustomButton(
               buttonText: 'QRIS',
@@ -168,6 +183,8 @@ class HomeScreenState extends State<HomeScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 15,
+              transitionType: PageTransitionType.slideLeft,
             ),
             CustomButton(
               buttonText: 'Notif',
@@ -177,6 +194,8 @@ class HomeScreenState extends State<HomeScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 15,
+              transitionType: PageTransitionType.slideLeft,
             ),
             CustomButton(
               buttonText: 'Profile',
@@ -186,6 +205,8 @@ class HomeScreenState extends State<HomeScreen> {
               textColor: Colors.white,
               iconColor: Colors.white,
               usePushReplacement: true,
+              borderRadius: 15,
+              transitionType: PageTransitionType.slideLeft,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uts_mobile_banking/widgets/page_transition.dart';
 import '../widgets/custom_button.dart'; // Import CustomButton
 import 'login_screen.dart';
 
@@ -123,6 +124,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   color: Color.fromARGB(255, 192, 248, 214),
                   usePushAndRemoveUntil: true,
+                  borderRadius: 18,
+                  transitionType: PageTransitionType.slideRight,
                 ),
               ),
             ],
