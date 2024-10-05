@@ -1,6 +1,6 @@
 name: uts_mobile_banking
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -51,9 +51,7 @@ flutter:
     - assets/images/permata.jpg
     - assets/images/seabank.jpg
     - assets/images/uob.jpg
-
-
-
+    - assets/images/login_screen_bg.jpeg
 
 flutter_native_splash:
   color: "#FFFFFF" # Warna splash screen

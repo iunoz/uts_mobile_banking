@@ -32,11 +32,11 @@ class VirtualAccountScreen extends StatelessWidget {
               child: ListView(
                 children: const [
                   InstitutionTile(institutionName: 'PLN'),
-                  InstitutionTile(institutionName: 'Pendidikan'),
-                  InstitutionTile(institutionName: 'Telko'),
-                  InstitutionTile(institutionName: 'Pajak'),
-                  InstitutionTile(institutionName: 'Angsuran'),
-                  InstitutionTile(institutionName: 'Asuransi'),
+                  InstitutionTile(institutionName: 'Education'),
+                  InstitutionTile(institutionName: 'Telecom'),
+                  InstitutionTile(institutionName: 'Tax'),
+                  InstitutionTile(institutionName: 'Installments'),
+                  InstitutionTile(institutionName: 'Insurance'),
                   InstitutionTile(institutionName: 'PDAM'),
                 ],
               ),
@@ -123,7 +123,7 @@ class PaymentDetailScreen extends StatelessWidget {
           {'name': 'PLN Postpaid', 'code': '28790'},
           {'name': 'PLN Batam', 'code': '33456'},
         ];
-      case 'Pendidikan':
+      case 'Education':
         return [
           {'name': 'Universitas Tarumanagara', 'code': '18888'},
           {'name': 'Universitas Indonesia', 'code': '37483'},
@@ -132,7 +132,7 @@ class PaymentDetailScreen extends StatelessWidget {
           {'name': 'Universitas Esa Unggul', 'code': '29384'},
           {'name': 'Universitas Kristen Indonesia', 'code': '94802'},
         ];
-      case 'Telko':
+      case 'Telcom':
         return [
           {'name': '3 Pascabayar', 'code': '33333'},
           {'name': 'BBT Ofon', 'code': '44444'},
@@ -142,7 +142,7 @@ class PaymentDetailScreen extends StatelessWidget {
           {'name': 'Smartfren Pascabayar', 'code': '28934'},
           {'name': 'Teleplus Comunikasi', 'code': '36473'},
         ];
-      case 'Pajak':
+      case 'Tax':
         return [
           {'name': 'PBB DKI', 'code': '12678'},
           {'name': 'Pajak/PNBP/Cukai', 'code': '86539'},
@@ -151,7 +151,7 @@ class PaymentDetailScreen extends StatelessWidget {
           {'name': 'e-PBB', 'code': '30291'},
           {'name': 'Dishub Kota Palu', 'code': '28491'},
         ];
-      case 'Angsuran':
+      case 'Installments':
         return [
           {'name': 'Aeon Card', 'code': '89783'},
           {'name': 'Astra Credit Companies', 'code': '12567'},
@@ -165,7 +165,7 @@ class PaymentDetailScreen extends StatelessWidget {
           {'name': 'BPR GUNUNG RINGGIT', 'code': '46831'},
         ];
 
-      case 'Asuransi':
+      case 'Insurance':
         return [
           {'name': 'AJ CAR 23777, PT', 'code': '20182'},
           {'name': 'ASURANSI UMUM MEGA', 'code': '17893'},
