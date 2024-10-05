@@ -36,6 +36,7 @@ class QrisScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
@@ -47,6 +48,7 @@ class QrisScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
             ),
             CustomButton(
               buttonText: 'Notif',
@@ -57,6 +59,7 @@ class QrisScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideLeft,
             ),
             CustomButton(
@@ -68,6 +71,7 @@ class QrisScreen extends StatelessWidget {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideLeft,
             ),
           ],

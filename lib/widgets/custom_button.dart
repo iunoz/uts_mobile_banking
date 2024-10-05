@@ -7,7 +7,9 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final IconData? icon; //opsional
   final Color? textColor;
+  final double? textSize;
   final Color? iconColor;
+  final double? iconSize;
   final double? borderRadius;
   final VoidCallback? customNavigation;
   final PageTransitionType? transitionType;
@@ -20,7 +22,9 @@ class CustomButton extends StatelessWidget {
     required this.color,
     this.icon, //opsional
     this.textColor,
+    this.textSize,
     this.iconColor,
+    this.iconSize,
     this.borderRadius,
     this.customNavigation,
     this.transitionType,
@@ -59,13 +63,13 @@ class CustomButton extends StatelessWidget {
           if (icon != null)
             Icon(
               icon,
-              size: 30,
+              size: iconSize ?? 30,
               color: iconColor ?? Colors.black,
             ),
           Text(
             buttonText,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: textSize ?? 14,
               color: textColor ?? Colors.black,
             ),
           ),

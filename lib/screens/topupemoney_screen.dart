@@ -134,7 +134,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Top up e-money'),
-        backgroundColor: const Color.fromARGB(255, 116, 199, 191),
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
       body: Container(
         color: const Color.fromARGB(255, 229, 249, 246),
@@ -142,7 +142,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 50),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 3,
@@ -206,9 +206,11 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                 ],
               ),
             ),
+            const SizedBox(height: 50),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
+                color: const Color(0xFF7EBDA6),
+                border: Border.all(color: Colors.grey.shade300),
                 borderRadius: BorderRadius.circular(10),
               ),
               padding: const EdgeInsets.all(16),
@@ -230,7 +232,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(5),
-                      color: const Color.fromARGB(255, 177, 235, 229),
+                      color: Colors.white,
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextField(
@@ -251,11 +253,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
               child: ElevatedButton(
                 onPressed: confirmTopUp,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 177, 235, 229),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    side: const BorderSide(color: Colors.black, width: 1),
-                  ),
+                  backgroundColor: const Color(0xFF7EBDA6),
                 ),
                 child: const Text(
                   "Confirm for Top Up",

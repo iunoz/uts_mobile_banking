@@ -122,45 +122,52 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Change Card'),
-        backgroundColor: const Color.fromARGB(255, 116, 199, 191),
+        backgroundColor: const Color(0xFF7EBDA6),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 12),
-            child: Icon(Icons.diamond),
           )
         ],
       ),
-      body: Container(
-        height: MediaQuery.of(context)
-            .size
-            .height, // biar full screen soalnya dia gamau full screen
-        width: MediaQuery.of(context).size.width,
-        color: Colors.white,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Reason for requesting card replacement:",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background2.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey.shade100,
+                    ),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Reason for requesting card replacement:",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
                                 onPressed: () {
                                   setState(() {
                                     _selectedReason = "Lost Card";
@@ -169,188 +176,197 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 177, 235, 229),
+                                  backgroundColor: _selectedReason ==
+                                          "Lost Card"
+                                      ? const Color(0xFF7EBDA6)
+                                      : const Color(
+                                          0xFF7EBDA6), // Warna berubah saat dipilih
+                                  elevation:
+                                      _selectedReason == "Lost Card" ? 4 : 0,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    side: BorderSide(
-                                      color: _selectedReason == "Lost Card"
-                                          ? Colors
-                                              .black // kalo dipilih bordernya warna hitam
-                                          : const Color.fromARGB(
-                                              255, 172, 223, 218),
-                                      width: 1,
-                                    ),
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
                                 ),
                                 child: const Text(
                                   "Lost Card",
-                                  style: TextStyle(color: Colors.black),
-                                )),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  _selectedReason = "Damaged Card";
-                                  _isDamagedCardSelected = true;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    const Color.fromARGB(255, 177, 235, 229),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(
-                                    color: _selectedReason == "Damaged Card"
-                                        ? Colors.black
-                                        : const Color.fromARGB(
-                                            255, 172, 223, 218),
-                                    width: 1,
-                                  ),
+                                  style: TextStyle(color: Colors.white),
                                 ),
                               ),
-                              child: const Text(
-                                "Damaged Card",
-                                style: TextStyle(color: Colors.black),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedReason = "Damaged";
+                                    _isDamagedCardSelected = true;
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: _selectedReason == "Damaged"
+                                      ? const Color(0xFF7EBDA6)
+                                      : const Color(0xFF7EBDA6),
+                                  elevation:
+                                      _selectedReason == "Damaged" ? 4 : 0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                                child: const Text(
+                                  "Damaged",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                GestureDetector(
-                  onTap: _pickImage,
-                  child: AbsorbPointer(
-                    absorbing: !_isDamagedCardSelected,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: _pickImage,
+                    child: AbsorbPointer(
+                      absorbing: !_isDamagedCardSelected,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade100,
+                          border: Border.all(
                             color: _isDamagedCardSelected
-                                ? Colors.black
-                                : Colors.grey),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Upload proof of damaged card:",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
+                                ? Colors.grey.shade300
+                                : Colors.grey.shade300,
                           ),
-                          const SizedBox(height: 10),
-                          Container(
-                            height: 150,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              border: Border.all(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Upload proof of damaged card:",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Container(
+                              height: 150,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                border: Border.all(
                                   color: _isDamagedCardSelected
                                       ? Colors.black
-                                      : Colors.grey),
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color.fromARGB(255, 177, 235, 229),
-                            ),
-                            child: Stack(
-                              children: [
-                                _selectedImage != null
-                                    ? Image.file(
-                                        _selectedImage!,
-                                        fit: BoxFit.cover,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                      )
-                                    : const Center(
-                                        child: Icon(Icons.image,
-                                            size: 50, color: Colors.grey),
-                                      ),
-                                if (_selectedImage != null)
-                                  Positioned(
-                                    top: 5,
-                                    right: 5,
-                                    child: GestureDetector(
-                                      onTap: _removeImage,
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.black54,
-                                          shape: BoxShape.circle,
+                                      : Colors.grey,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              child: Stack(
+                                children: [
+                                  _selectedImage != null
+                                      ? Image.file(
+                                          _selectedImage!,
+                                          fit: BoxFit.cover,
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                        )
+                                      : const Center(
+                                          child: Icon(Icons.image,
+                                              size: 50,
+                                              color: Color(0xFF7EBDA6)),
                                         ),
-                                        child: const Icon(
-                                          Icons.close,
-                                          color: Colors.white,
-                                          size: 20,
+                                  if (_selectedImage != null)
+                                    Positioned(
+                                      top: 5,
+                                      right: 5,
+                                      child: GestureDetector(
+                                        onTap: _removeImage,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            color: Colors.black54,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: const Icon(
+                                            Icons.close,
+                                            color: Colors.white,
+                                            size: 20,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Enter the nearest bank in your area",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                      const SizedBox(height: 10),
-                      TextField(
-                        controller:
-                            _nearestBankController, // controller buat cek apakah bank sudah diisi
-                        decoration: InputDecoration(
-                          hintText: "Example: Sumi Bank - Kelapa Gading",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: const BorderSide(color: Colors.black),
-                          ),
-                          filled: true,
-                          fillColor: const Color.fromARGB(255, 177, 235, 229),
-                          contentPadding: const EdgeInsets.all(10),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: _submitForm,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 177, 235, 229),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      side: const BorderSide(color: Colors.black, width: 1),
-                    ),
-                    child: const Text(
-                      "Submit",
-                      style: TextStyle(color: Colors.black),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      border: Border.all(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Enter the nearest bank in your area",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        TextField(
+                          controller: _nearestBankController,
+                          decoration: InputDecoration(
+                            hintText: "Example: Sumi Bank - Kelapa Gading",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(color: Colors.grey),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding: const EdgeInsets.all(16),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: _submitForm,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF7EBDA6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 16),
+                      ),
+                      child: const Text(
+                        "Submit",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
