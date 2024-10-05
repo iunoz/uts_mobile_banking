@@ -10,10 +10,10 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, this.registrationSuccessful = false});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   bool _obscurePassword = true; //awal hidden text di set true
 
   @override
