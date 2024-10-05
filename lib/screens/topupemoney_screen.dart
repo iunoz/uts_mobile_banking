@@ -94,10 +94,11 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                   _showAlertDialog(
                     // menampilkan window sukses top up setelah tekan confirm
                     'Success!',
-                    'Top up using $selectedEmoney for number ${phoneController.text} successed',
+                    'Top up using $selectedEmoney for number ${phoneController.text} succeeded',
                   );
+                  _resetForm(); // Reset form setelah sukses
                 } else {
-                  _showAlertDialog('Can Not Proccess',
+                  _showAlertDialog('Can Not Process',
                       'Please enter a valid PIN.'); // tampilkan window error jika pin tidak diinput
                 }
               },
@@ -107,6 +108,13 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
         );
       },
     );
+  }
+
+  void _resetForm() {
+    setState(() {
+      selectedEmoney = '';
+      phoneController.clear();
+    });
   }
 
   void _showAlertDialog(String title, String message) {

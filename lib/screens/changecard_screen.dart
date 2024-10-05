@@ -64,6 +64,15 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
       return;
     }
 
+    void _resetForm() {
+      setState(() {
+        _selectedImage = null; 
+        _nearestBankController.clear(); 
+        _selectedReason = null; 
+        _isDamagedCardSelected = false; 
+      });
+    }
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -89,6 +98,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                 Navigator.of(context).pop();
                 _showAlertDialog('Success',
                     'Request submitted successfully! Your request will be stored in notifications; please wait for further notifications from the nearest bank branch. thank you!');
+                _resetForm(); // jika sudah sukses maka semua input user akan di hapus atau direset
               },
             ),
           ],
@@ -134,7 +144,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/background2.jpg'),
+                image: AssetImage('assets/images/tatsumi.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -180,7 +190,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                                           "Lost Card"
                                       ? const Color(0xFF7EBDA6)
                                       : const Color(
-                                          0xFF7EBDA6), // Warna berubah saat dipilih
+                                          0xFF7EBDA6), // warna berubah saat dipilih
                                   elevation:
                                       _selectedReason == "Lost Card" ? 4 : 0,
                                   shape: RoundedRectangleBorder(
