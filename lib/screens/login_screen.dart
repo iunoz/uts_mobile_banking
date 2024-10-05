@@ -10,10 +10,10 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, this.registrationSuccessful = false});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   bool _obscurePassword = true; //awal hidden text di set true
 
   @override
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const Center(
                 child: CustomButton(
                   buttonText: 'LOGIN',
-                  destination: HomeScreen(),
+                  destination: HomeScreen(showAnimation: true),
                   color: Colors.greenAccent,
                   usePushReplacement: true,
                   borderRadius: 18,
