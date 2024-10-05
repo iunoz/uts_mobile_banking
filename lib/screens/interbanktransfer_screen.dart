@@ -126,8 +126,8 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
     _showDialog(
       'Transfer Successful',
       '$formattedDate $formattedTime\n'
-          'Bank: $_selectedBank\n'
-          'To: $accountNumber\n'
+          'From: SUMI Bank\n'
+          'To: $_selectedBank $accountNumber\n'
           '$recipientName\n'
           'Amount: $formattedAmount\n'
           '${message.isNotEmpty ? 'Message: $message' : ''}',
@@ -195,8 +195,8 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
                     children: [
                       Image.asset(
                         entry.value,
-                        width: 24, // Adjust width as needed
-                        height: 24, // Adjust height as needed
+                        width: 24,
+                        height: 24,
                       ),
                       const SizedBox(width: 8),
                       Text(entry.key),

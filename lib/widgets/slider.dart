@@ -35,8 +35,8 @@ class CustomSlider extends StatelessWidget {
           child: Slider(
             value: currentLimit,
             min: 10000,
-            max: 1000000,
-            divisions: 990,
+            max: 10000000,
+            divisions: 9990,
             label: 'Rp ${currentLimit.round()}',
             onChanged: onChanged,
           ),
