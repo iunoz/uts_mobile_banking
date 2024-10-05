@@ -40,6 +40,17 @@ flutter:
     - assets/images/flazz.png
     - assets/images/background2.jpg
     - assets/animations/confetti.json
+    - assets/images/bca.jpg
+    - assets/images/bri.jpg
+    - assets/images/cimbniaga.jpg
+    - assets/images/citibank.jpg
+    - assets/images/danamon.jpg
+    - assets/images/mandiri.jpg
+    - assets/images/mega.jpg
+    - assets/images/panin.jpg
+    - assets/images/permata.jpg
+    - assets/images/seabank.jpg
+    - assets/images/uob.jpg
 
 
 
