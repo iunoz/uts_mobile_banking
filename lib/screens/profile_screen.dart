@@ -292,6 +292,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 usePushReplacement: true,
                 iconSize: 22,
                 borderRadius: 15,
+                transitionType: PageTransitionType.slideRight,
               ),
             ),
             Flexible(
@@ -305,7 +306,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 usePushReplacement: true,
                 borderRadius: 15,
                 iconSize: 22,
-                transitionType: PageTransitionType.slideLeft,
+                transitionType: PageTransitionType.slideRight,
               ),
             ),
             Flexible(
@@ -319,7 +320,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 usePushReplacement: true,
                 borderRadius: 15,
                 iconSize: 22,
-                transitionType: PageTransitionType.slideLeft,
+                transitionType: PageTransitionType.slideRight,
               ),
             ),
             Flexible(
