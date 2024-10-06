@@ -21,9 +21,9 @@ class InteraccounttransferScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(  // Ganti Column menjadi ListView agar bisa di-scroll
           children: [
-            // List account cards (seperti sebelumnya)
+            // List account cards
             _buildAccountCard(
               context,
               "Ryan Hermanto",
