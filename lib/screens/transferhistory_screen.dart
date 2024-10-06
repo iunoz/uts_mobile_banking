@@ -9,6 +9,8 @@ class TransferHistoryScreen extends StatefulWidget {
 }
 
 class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
+  final TextEditingController _searchController = TextEditingController();
+
   // Sample list of transactions with dates
   final List<Map<String, dynamic>> transactions = [
     {"date": "2024-09-01", "description": "Groceries", "amount": "-Rp 200,000"},
@@ -48,6 +50,7 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
   ];
 
   String selectedMonth = 'All'; // Default is to show all transactions
+  String searchTerm = ''; // Search term for filtering
 
   // Get list of months from transactions
   List<String> getTransactionMonths() {
@@ -67,22 +70,56 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
     return months;
   }
 
-  // Filter transactions by selected month
+  // Filter transactions by selected month and search term
   List<Map<String, dynamic>> getFilteredTransactions() {
-    if (selectedMonth == 'All') {
-      return transactions;
+    List<Map<String, dynamic>> filteredTransactions = transactions;
+
+    // Filter by month
+    if (selectedMonth != 'All') {
+      filteredTransactions = filteredTransactions.where((t) {
+        DateTime date = DateFormat('yyyy-MM-dd').parse(t['date']);
+        return DateFormat('MMMM').format(date) == selectedMonth;
+      }).toList();
     }
 
-    return transactions.where((t) {
-      DateTime date = DateFormat('yyyy-MM-dd').parse(t['date']);
-      return DateFormat('MMMM').format(date) == selectedMonth;
-    }).toList();
+    // Filter by search term
+    if (searchTerm.isNotEmpty) {
+      filteredTransactions = filteredTransactions.where((t) {
+        return t['description']
+            .toLowerCase()
+            .contains(searchTerm.toLowerCase());
+      }).toList();
+    }
+
+    return filteredTransactions;
+  }
+
+  // Calculate total income and expenses
+  Map<String, String> getSummary() {
+    double totalIncome = 0;
+    double totalExpense = 0;
+
+    for (var transaction in transactions) {
+      String amount =
+          transaction['amount'].replaceAll('Rp ', '').replaceAll(',', '');
+      if (transaction['amount'].startsWith('-')) {
+        totalExpense += double.parse(amount);
+      } else {
+        totalIncome += double.parse(amount);
+      }
+    }
+
+    return {
+      "income": "+Rp ${NumberFormat('#,###').format(totalIncome)}",
+      "expense": "-Rp ${NumberFormat('#,###').format(totalExpense)}",
+    };
   }
 
   @override
   Widget build(BuildContext context) {
     final filteredTransactions = getFilteredTransactions();
     final availableMonths = getTransactionMonths();
+    final summary = getSummary();
 
     return Scaffold(
       appBar: AppBar(
@@ -132,6 +169,61 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
                         );
                       }).toList(),
                     ),
+                    const SizedBox(height: 10),
+                    // Search bar
+                    TextField(
+                      controller: _searchController,
+                      decoration: const InputDecoration(
+                        labelText: "Search by description",
+                        prefixIcon: Icon(Icons.search),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          searchTerm = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    // Summary
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            const Text(
+                              "Total Income",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              summary['income']!,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            const Text(
+                              "Total Expense",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              summary['expense']!,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 20),
                     // Transaction List
                     Expanded(
@@ -151,7 +243,9 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
                                     : Colors.green,
                               ),
                               title: Text(transaction['description']),
-                              subtitle: Text(transaction['date']),
+                              subtitle: Text(DateFormat('d MMMM yyyy').format(
+                                  DateFormat('yyyy-MM-dd')
+                                      .parse(transaction['date']))),
                               trailing: Text(
                                 transaction['amount'],
                                 style: TextStyle(
