@@ -258,20 +258,15 @@ class VirtualAccountTile extends StatelessWidget {
           institutionName,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        subtitle: Text(
-          'Virtual Account Code: $virtualAccountCode',
-          style: const TextStyle(color: Colors.black),
-        ),
-        trailing: const Icon(Icons.arrow_forward_ios),
+        subtitle: Text('Virtual Account Code: $virtualAccountCode'),
+        trailing: const Icon(Icons.payment),
         onTap: () {
-          //Navigasi ke halaman input nomor VA
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => VirtualAccountInputScreen(
-                institutionName: institutionName,
-                virtualAccountCode: virtualAccountCode,
-              ),
+              builder: (context) => PaymentInputScreen(
+                  institutionName: institutionName,
+                  virtualAccountCode: virtualAccountCode),
             ),
           );
         },
@@ -280,28 +275,28 @@ class VirtualAccountTile extends StatelessWidget {
   }
 }
 
-class VirtualAccountInputScreen extends StatelessWidget {
+class PaymentInputScreen extends StatelessWidget {
   final String institutionName;
   final String virtualAccountCode;
 
-  const VirtualAccountInputScreen({
+  PaymentInputScreen({
     required this.institutionName,
     required this.virtualAccountCode,
     super.key,
   });
 
+  final TextEditingController vaNumberController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController vaNumberController = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Pay $institutionName",
-          style: const TextStyle(
-              fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+        title: const Text(
+          'Input Virtual Account Number',
+          style: TextStyle(
+              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        foregroundColor: Colors.white,
+        centerTitle: true,
         backgroundColor: const Color(0xFF7EBDA6),
       ),
       body: Stack(
@@ -319,33 +314,31 @@ class VirtualAccountInputScreen extends StatelessWidget {
                   color: Colors.white.withOpacity(0.5),
                 ),
               ])),
-          // Konten utama
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  'Enter Virtual Account Number for $institutionName',
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-                const SizedBox(height: 20),
                 TextField(
                   controller: vaNumberController,
-                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
+                    labelText: 'Enter Virtual Account Number',
                     border: OutlineInputBorder(),
-                    labelText: 'Virtual Account Number',
                     filled: true,
                     fillColor: Colors.white,
                     hintText: 'Enter the correct VA number',
                   ),
+                  keyboardType: TextInputType.number,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 16.0),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF7EBDA6),
+                  ),
+                  child: const Text(
+                    'Continue Payment',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   onPressed: () {
                     String vaNumber = vaNumberController.text;
                     if (vaNumber.isNotEmpty) {
@@ -363,9 +356,17 @@ class VirtualAccountInputScreen extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
-                                // Lanjutkan pembayaran
                                 Navigator.pop(context);
-                                // Tambahkan logika untuk melanjutkan pembayaran di sini
+
+                                // Tampilkan pesan berhasil menggunakan SnackBar
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Payment Successful'),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+
+                                // Logika tambahan untuk melanjutkan pembayaran bisa ditambahkan di sini
                               },
                               child: const Text('Continue'),
                             ),
@@ -383,15 +384,6 @@ class VirtualAccountInputScreen extends StatelessWidget {
                       );
                     }
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF7EBDA6),
-                  ),
-                  child: const Text(
-                    'Continue Payment',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
                 ),
               ],
             ),
