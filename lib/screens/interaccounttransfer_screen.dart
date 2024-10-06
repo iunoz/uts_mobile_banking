@@ -77,6 +77,9 @@ class InteraccounttransferScreen extends StatelessWidget {
       BuildContext context, String accountName, String accountNumber) {
     return Card(
       color: Colors.grey[200],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15), // Tambahkan border radius
+      ),
       child: ListTile(
         leading: const Icon(Icons.account_circle,
             size: 40, color: Color(0xFF7EBDA6)), // Ganti dengan warna baru
@@ -109,7 +112,8 @@ class InteraccounttransferScreen extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0), // Persegi panjang
+              borderRadius:
+                  BorderRadius.circular(15), // Tambahkan border radius
             ),
             backgroundColor: const Color(0xFF7EBDA6), // Ganti dengan warna baru
           ),
