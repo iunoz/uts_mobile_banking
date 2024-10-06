@@ -27,7 +27,7 @@ class InteraccounttransferScreen extends StatelessWidget {
             fit: BoxFit.cover, // Sesuaikan gambar dengan layar
           ),
         ),
-        child: Padding(
+        child: SingleChildScrollView( // Gunakan SingleChildScrollView di sini
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
