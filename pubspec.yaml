@@ -44,6 +44,7 @@ flutter:
     - assets/images/background2.jpg
     - assets/animations/confetti.json
     - assets/animations/paymentsuccess.json
+    - assets/animations/goodgood.json
     - assets/images/bca.jpg
     - assets/images/bri.jpg
     - assets/images/cimbniaga.jpg
@@ -59,6 +60,9 @@ flutter:
     - assets/images/kartudebit.png
     - assets/images/bg.jpg
     - assets/images/login_screen_bg.png
+    - assets/images/ads1.jpeg
+    - assets/images/ads2.jpeg
+    - assets/images/ads3.jpeg
 
 flutter_native_splash:
   image: lib/Anime Hijau.jpg

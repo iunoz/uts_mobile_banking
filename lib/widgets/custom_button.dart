@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   final double? iconSize;
   final double? borderRadius;
   final VoidCallback? customNavigation;
+  final VoidCallback? onPressed;
   final PageTransitionType? transitionType;
   final bool usePushReplacement;
   final bool usePushAndRemoveUntil;
@@ -27,6 +28,7 @@ class CustomButton extends StatelessWidget {
     this.iconSize,
     this.borderRadius,
     this.customNavigation,
+    this.onPressed,
     this.transitionType,
     this.usePushReplacement = false,
     this.usePushAndRemoveUntil = false,
@@ -36,7 +38,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: customNavigation ??
+      onPressed: onPressed ?? //pake onpressed jk ada, kalo gd pake customNav
+          customNavigation ??
           () {
             Route route = _buildPageRoute(context, destination);
             if (usePushAndRemoveUntil) {
