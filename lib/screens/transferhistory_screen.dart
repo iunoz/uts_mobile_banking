@@ -87,7 +87,7 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Transfer & Transaction History",
+          "Transaction History",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -95,64 +95,82 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Dropdown to select month
-            DropdownButton<String>(
-              value: selectedMonth,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedMonth = newValue!;
-                });
-              },
-              items:
-                  availableMonths.map<DropdownMenuItem<String>>((String month) {
-                return DropdownMenuItem<String>(
-                  value: month,
-                  child: Text(month),
-                );
-              }).toList(),
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg.jpg'),
+              fit: BoxFit.cover,
             ),
-            const SizedBox(height: 20),
-            // Transaction List
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredTransactions.length,
-                itemBuilder: (context, index) {
-                  final transaction = filteredTransactions[index];
-                  return Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      leading: Icon(
-                        transaction['amount'].startsWith('-')
-                            ? Icons.arrow_downward
-                            : Icons.arrow_upward,
-                        color: transaction['amount'].startsWith('-')
-                            ? Colors.red
-                            : Colors.green,
-                      ),
-                      title: Text(transaction['description']),
-                      subtitle: Text(transaction['date']),
-                      trailing: Text(
-                        transaction['amount'],
-                        style: TextStyle(
-                          color: transaction['amount'].startsWith('-')
-                              ? Colors.red
-                              : Colors.green,
-                          fontWeight: FontWeight.bold,
-                        ),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                color: Colors.white.withOpacity(0.5),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Dropdown to select month
+                    DropdownButton<String>(
+                      value: selectedMonth,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedMonth = newValue!;
+                        });
+                      },
+                      items: availableMonths
+                          .map<DropdownMenuItem<String>>((String month) {
+                        return DropdownMenuItem<String>(
+                          value: month,
+                          child: Text(month),
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(height: 20),
+                    // Transaction List
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: filteredTransactions.length,
+                        itemBuilder: (context, index) {
+                          final transaction = filteredTransactions[index];
+                          return Card(
+                            margin: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: ListTile(
+                              leading: Icon(
+                                transaction['amount'].startsWith('-')
+                                    ? Icons.arrow_downward
+                                    : Icons.arrow_upward,
+                                color: transaction['amount'].startsWith('-')
+                                    ? Colors.red
+                                    : Colors.green,
+                              ),
+                              title: Text(transaction['description']),
+                              subtitle: Text(transaction['date']),
+                              trailing: Text(
+                                transaction['amount'],
+                                style: TextStyle(
+                                  color: transaction['amount'].startsWith('-')
+                                      ? Colors.red
+                                      : Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
-                  );
-                },
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

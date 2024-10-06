@@ -236,7 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Expanded(
                             child: _buildActionColumn(
                               icon: Icons.credit_card,
-                              label: "Change Card",
+                              label: "Change\nCard",
                               color: const Color(0xFFd99a3d),
                               onTap: () {
                                 Navigator.push(
@@ -253,7 +253,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Expanded(
                             child: _buildActionColumn(
                               icon: Icons.lock,
-                              label: "Change Pin",
+                              label: "Change\nPin",
                               color: const Color(0xFF009baa),
                               onTap: () {
                                 Navigator.push(

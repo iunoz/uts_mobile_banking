@@ -27,29 +27,55 @@ class BillsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bills"),
-        backgroundColor: Colors.teal,
+        title: const Text(
+          "Bills",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
         centerTitle: true,
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 10.0,
-          children: [
-            buildBillCard(
-                context, FontAwesomeIcons.bolt, 'Electricity', true, 120000),
-            buildBillCard(context, FontAwesomeIcons.tint, 'Water', true, 50000),
-            buildBillCard(
-                context, FontAwesomeIcons.fileInvoiceDollar, 'Tax', false, 0),
-            buildBillCard(
-                context, FontAwesomeIcons.school, 'School', true, 250000),
-            buildBillCard(
-                context, FontAwesomeIcons.phone, 'Home Phone', false, 0),
-            buildBillCard(
-                context, FontAwesomeIcons.hospital, 'BPJS', true, 150000),
-          ],
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Stack(
+            children: [
+              Container(
+                color: Colors.white.withOpacity(0.5),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10.0,
+                  mainAxisSpacing: 10.0,
+                  children: [
+                    buildBillCard(context, FontAwesomeIcons.bolt, 'Electricity',
+                        true, 120000),
+                    buildBillCard(
+                        context, FontAwesomeIcons.tint, 'Water', true, 50000),
+                    buildBillCard(context, FontAwesomeIcons.fileInvoiceDollar,
+                        'Tax', false, 0),
+                    buildBillCard(context, FontAwesomeIcons.school, 'School',
+                        true, 250000),
+                    buildBillCard(context, FontAwesomeIcons.phone, 'Home Phone',
+                        false, 0),
+                    buildBillCard(context, FontAwesomeIcons.hospital, 'BPJS',
+                        true, 150000),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -107,7 +133,7 @@ class BillsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FaIcon(icon, size: 50, color: Colors.blue),
+            FaIcon(icon, size: 50, color: const Color(0xFF7EBDA6)),
             const SizedBox(height: 10),
             Text(title,
                 style:
@@ -137,7 +163,8 @@ class BillsScreen extends StatelessWidget {
             children: [
               Text(
                 'Enter PIN to Pay Rp $amount',
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               TextField(
