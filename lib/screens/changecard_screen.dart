@@ -349,7 +349,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                         TextField(
                           controller: _nearestBankController,
                           decoration: InputDecoration(
-                            hintText: "Ex: Sumi Bank - Kelapa Gading",
+                            hintText: "Example: Sumi Bank - Kelapa Gading",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: const BorderSide(color: Colors.grey),
