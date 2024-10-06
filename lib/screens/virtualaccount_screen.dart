@@ -8,11 +8,11 @@ class VirtualAccountScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "VIRTUAL ACCOUNT",
+          "Virtual Account",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         centerTitle: true,
@@ -23,9 +23,11 @@ class VirtualAccountScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              'Select Virtual Account:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            const Center(
+              child: Text(
+                'Select Virtual Account:',
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(height: 20),
             Expanded(
@@ -93,8 +95,8 @@ class PaymentDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           "Payment for $institutionName",
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colors.teal,
@@ -132,7 +134,7 @@ class PaymentDetailScreen extends StatelessWidget {
           {'name': 'Universitas Esa Unggul', 'code': '29384'},
           {'name': 'Universitas Kristen Indonesia', 'code': '94802'},
         ];
-      case 'Telcom':
+      case 'Telecom':
         return [
           {'name': '3 Pascabayar', 'code': '33333'},
           {'name': 'BBT Ofon', 'code': '44444'},
@@ -253,7 +255,11 @@ class VirtualAccountInputScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pay $institutionName"),
+        title: Text(
+          "Pay $institutionName",
+          style: const TextStyle(
+              fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.teal,
       ),
       body: Padding(

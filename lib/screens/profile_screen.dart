@@ -23,8 +23,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Konfirmasi Logout"),
-          content: const Text("Apakah anda ingin melakukan LOG OUT?"),
+          title: const Text("Logout Confirmation"),
+          content: const Text("Do you want to log out?"),
           actions: [
             TextButton(
               style: TextButton.styleFrom(
@@ -41,7 +41,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
               ),
-              child: const Text("Submit"),
+              child: const Text("Log Out"),
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.pushAndRemoveUntil(
@@ -62,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Home Screen",
+          "Profile",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xFF7EBDA6),
+        backgroundColor: const Color(0xFF7EBDA6),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -81,144 +81,190 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Stack(
             children: [
-              // Card information section
               Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.teal.shade50,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1,
-                  ),
-                ),
+                color: Colors.white.withOpacity(0.5),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Card type
-                    const Text(
-                      "Card Type",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-
-                    // Card name
-                    const Text(
-                      "SIGMA Xpresi",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-
-                    // Card image
-                    const SizedBox(height: 10),
+                    // Card information
                     Container(
+                      padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.teal.shade50,
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1,
+                        ),
                       ),
-                      child: Image.network(
-                        'https://static.vecteezy.com/system/resources/previews/009/384/393/non_2x/credit-card-clipart-design-illustration-free-png.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    // Card number
-                    const Text(
-                      "Card Number",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Card type
+                          const Text(
+                            "Card Type",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
 
-                    // Card number value
-                    const Text(
-                      "1234 5678 9123 4567",
-                      style: TextStyle(
-                        fontSize: 16,
+                          // Card name
+                          const Text(
+                            "EMERALD Debit",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+
+                          // Card image
+                          const SizedBox(height: 10),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors
+                                  .white, // Add a background color if needed
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            clipBehavior: Clip.antiAlias, // Untuk sisi rounded
+                            child: Image.asset(
+                              'assets/images/kartudebit.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+
+                          // Cardholder name
+                          const SizedBox(height: 20),
+                          const Text(
+                            "Cardholder Name",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+
+                          // Cardholder name value
+                          const Text(
+                            "Gregorius Nathanyel Benedict",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+
+                          // Card number
+                          const SizedBox(height: 20),
+                          const Text(
+                            "Card Number",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+
+                          // Card number value
+                          const Text(
+                            "1234 5678 9123 4567",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
                       ),
+                    ),
+
+                    // Actions Row
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: _buildActionColumn(
+                            icon: Icons.attach_money,
+                            label: "Set\nLimit",
+                            color: const Color(0xFF02854f),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SetLimitScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 16), // Space between columns
+                        Expanded(
+                          child: _buildActionColumn(
+                            icon: Icons.block,
+                            label: "Block\nCard",
+                            color: const Color(0xFFd8210b),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const BlockCardScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 16), // Space between columns
+                        Expanded(
+                          child: _buildActionColumn(
+                            icon: Icons.credit_card,
+                            label: "Change Card",
+                            color: const Color(0xFFd99a3d),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ChangeCardScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 16), // Space between columns
+                        Expanded(
+                          child: _buildActionColumn(
+                            icon: Icons.lock,
+                            label: "Change Pin",
+                            color: const Color(0xFF009baa),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ChangePinScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ),
-
-              // Actions Row
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: _buildActionColumn(
-                      icon: Icons.attach_money,
-                      label: "Set\nLimit",
-                      color: Color(0xFF02854f),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SetLimitScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 16), // Space between columns
-                  Expanded(
-                    child: _buildActionColumn(
-                      icon: Icons.block,
-                      label: "Block\nCard",
-                      color: Color(0xFFd8210b),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const BlockCardScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 16), // Space between columns
-                  Expanded(
-                    child: _buildActionColumn(
-                      icon: Icons.credit_card,
-                      label: "Change Card",
-                      color: Color(0xFFd99a3d),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ChangeCardScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(width: 16), // Space between columns
-                  Expanded(
-                    child: _buildActionColumn(
-                      icon: Icons.lock,
-                      label: "Change Pin",
-                      color: Color(0xFF009baa),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ChangePinScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
               ),
             ],
           ),
@@ -238,6 +284,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
               transitionType: PageTransitionType.slideRight,
             ),
             CustomButton(
@@ -249,7 +296,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
-              transitionType: PageTransitionType.slideRight,
+              iconSize: 22,
             ),
             CustomButton(
               buttonText: 'Notif',
@@ -260,7 +307,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
-              transitionType: PageTransitionType.slideRight,
+              iconSize: 22,
+              transitionType: PageTransitionType.slideLeft,
             ),
             CustomButton(
               buttonText: 'Profile',
@@ -271,48 +319,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
               iconColor: Colors.white,
               usePushReplacement: true,
               borderRadius: 18,
+              iconSize: 22,
+              transitionType: PageTransitionType.slideLeft,
             ),
           ],
         ),
       ),
     );
   }
+}
 
-  Column _buildActionColumn({
-    required IconData icon,
-    required String label,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(8),
-            color: color.withOpacity(0.2),
-            border: Border.all(
-              color: color,
-              width: 1,
-            ),
-          ),
-          child: IconButton(
-            onPressed: onTap,
-            icon: Icon(icon),
+Column _buildActionColumn({
+  required IconData icon,
+  required String label,
+  required Color color,
+  required VoidCallback onTap,
+}) {
+  return Column(
+    children: [
+      Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(8),
+          color: color.withOpacity(0.2),
+          border: Border.all(
             color: color,
-            iconSize: 24,
-            padding: const EdgeInsets.all(12),
+            width: 1,
           ),
         ),
-        const SizedBox(height: 5),
-        Text(
-          label,
-          style: TextStyle(
-            color: color,
-          ),
-          textAlign: TextAlign.center,
+        child: IconButton(
+          onPressed: onTap,
+          icon: Icon(icon),
+          color: color,
+          iconSize: 24,
+          padding: const EdgeInsets.all(12),
         ),
-      ],
-    );
-  }
+      ),
+      const SizedBox(height: 5),
+      Text(
+        label,
+        style: TextStyle(
+          color: color,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    ],
+  );
 }

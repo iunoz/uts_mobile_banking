@@ -55,6 +55,10 @@ flutter:
     - assets/images/seabank.jpg
     - assets/images/uob.jpg
     - assets/images/login_screen_bg.jpeg
+    - assets/images/nav.jpg
+    - assets/images/kartudebit.png
+    - assets/images/bg.jpg
+    - assets/images/login_screen_bg.png
 
 flutter_native_splash:
   color: "#FFFFFF" # Warna splash screen

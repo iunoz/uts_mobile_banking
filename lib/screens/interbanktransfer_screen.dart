@@ -178,76 +178,91 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
         foregroundColor: Colors.white,
         backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            DropdownButtonFormField<String>(
-              value: _selectedBank,
-              decoration: const InputDecoration(
-                labelText: 'Bank',
-                border: OutlineInputBorder(),
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg.jpg'), // Background image
+                fit: BoxFit.cover,
               ),
-              items: _banks.entries.map((entry) {
-                return DropdownMenuItem<String>(
-                  value: entry.key,
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        entry.value,
-                        width: 24,
-                        height: 24,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(entry.key),
-                    ],
+            ),
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.5), // White overlay with opacity
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                DropdownButtonFormField<String>(
+                  value: _selectedBank,
+                  decoration: const InputDecoration(
+                    labelText: 'Bank',
+                    border: OutlineInputBorder(),
                   ),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedBank = newValue;
-                });
-              },
+                  items: _banks.entries.map((entry) {
+                    return DropdownMenuItem<String>(
+                      value: entry.key,
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            entry.value,
+                            width: 24,
+                            height: 24,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(entry.key),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedBank = newValue;
+                    });
+                  },
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: _accountController,
+                  decoration: const InputDecoration(
+                    labelText: 'Recipient Account Number',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: _amountController,
+                  decoration: const InputDecoration(
+                    labelText: 'Amount',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: _messageController,
+                  decoration: const InputDecoration(
+                    labelText: 'Message (optional)',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.text,
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: _submitTransfer,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: const Color(0xFF7EBDA6),
+                  ),
+                  child: const Text('Submit Transfer'),
+                ),
+              ],
             ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _accountController,
-              decoration: const InputDecoration(
-                labelText: 'Recipient Account Number',
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _amountController,
-              decoration: const InputDecoration(
-                labelText: 'Amount',
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _messageController,
-              decoration: const InputDecoration(
-                labelText: 'Message (optional)',
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.text,
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _submitTransfer,
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xFF7EBDA6),
-              ),
-              child: const Text('Submit Transfer'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
