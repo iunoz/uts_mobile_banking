@@ -17,44 +17,53 @@ class InteraccounttransferScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.teal,
+        backgroundColor: const Color(0xFF7EBDA6), // Ganti dengan warna baru
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(  // Ganti Column menjadi ListView agar bisa di-scroll
-          children: [
-            // List account cards
-            _buildAccountCard(
-              context,
-              "Ryan Hermanto",
-              "535230147",
-            ),
-            _buildAccountCard(
-              context,
-              "Irene Carl Lewis",
-              "535230185",
-            ),
-            _buildAccountCard(
-              context,
-              "Paquita Melawi",
-              "535230062",
-            ),
-            _buildAccountCard(
-              context,
-              "Panicia",
-              "535230059",
-            ),
-            _buildAccountCard(
-              context,
-              "Melfanny Leono",
-              "535230152",
-            ),
-            _buildAccountCard(
-              context,
-              "Gregorius Nathanyel Benedict",
-              "535230114",
-            ),
-          ],
+      body: Container(
+        // Tambahkan background image
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg.jpg'), // Path ke background image
+            fit: BoxFit.cover, // Sesuaikan gambar dengan layar
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              // List account cards (seperti sebelumnya)
+              _buildAccountCard(
+                context,
+                "Ryan Hermanto",
+                "535230147",
+              ),
+              _buildAccountCard(
+                context,
+                "Irene Carl Lewis",
+                "535230185",
+              ),
+              _buildAccountCard(
+                context,
+                "Paquita Melawi",
+                "535230062",
+              ),
+              _buildAccountCard(
+                context,
+                "Panicia",
+                "535230059",
+              ),
+              _buildAccountCard(
+                context,
+                "Melfanny Leono",
+                "535230152",
+              ),
+              _buildAccountCard(
+                context,
+                "Gregorius Nathanyel Benedict",
+                "535230114",
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -65,7 +74,7 @@ class InteraccounttransferScreen extends StatelessWidget {
     return Card(
       color: Colors.grey[200],
       child: ListTile(
-        leading: const Icon(Icons.account_circle, size: 40, color: Colors.teal),
+        leading: const Icon(Icons.account_circle, size: 40, color: Color(0xFF7EBDA6)), // Ganti dengan warna baru
         title: Text(
           accountName,
           style: const TextStyle(fontWeight: FontWeight.bold),
@@ -97,9 +106,14 @@ class InteraccounttransferScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0), // Persegi panjang
             ),
-            backgroundColor: Colors.teal,
+            backgroundColor: const Color(0xFF7EBDA6), // Ganti dengan warna baru
           ),
-          child: const Text("Transfer"),
+          child: const Text(
+            "Transfer",
+            style: TextStyle(
+              color: Colors.white, // Mengubah warna teks menjadi putih
+            ),
+          ),
         ),
       ),
     );
