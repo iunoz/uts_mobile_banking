@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/ads_card.dart'; // Import the AdCard widget
+import '../widgets/ads_card.dart'; // Import the AdsCard widget
 
 class BalanceScreen extends StatefulWidget {
   const BalanceScreen({super.key});
@@ -11,6 +11,109 @@ class BalanceScreen extends StatefulWidget {
 class BalanceScreenState extends State<BalanceScreen> {
   bool _isBalanceHidden = true; // Tracks visibility of the balance
   bool _isAccountNumberHidden = true; // Tracks visibility of the account number
+  final TextEditingController _amountController =
+      TextEditingController(); // Controller for amount input
+  String _pin = ''; // Variable to store the PIN
+
+  // Method to show the first dialog to enter the amount
+  void _showAmountDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Save Money'),
+          content: TextField(
+            controller: _amountController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              labelText: 'Amount to save (in Rupiah)',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close dialog
+              },
+              child: const Text('Back'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Check if amount is entered
+                if (_amountController.text.isNotEmpty) {
+                  Navigator.of(context).pop(); // Close the amount dialog
+                  _showPinDialog(); // Show the PIN dialog
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please enter a valid amount.'),
+                    ),
+                  );
+                }
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Method to show the dialog for entering the PIN
+  void _showPinDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Enter Your PIN'),
+          content: TextField(
+            obscureText: true,
+            onChanged: (value) {
+              _pin = value; // Update PIN as user types
+            },
+            decoration: const InputDecoration(
+              labelText: 'PIN',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close dialog
+              },
+              child: const Text('Back'),
+            ),
+            TextButton(
+              onPressed: () {
+                if (_pin.isNotEmpty) {
+                  // Implement your PIN validation logic here
+
+                  // Show notification after saving
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        'Rp ${_amountController.text} has been saved to emergency funds.',
+                      ),
+                    ),
+                  );
+
+                  // Clear input fields
+                  _amountController.clear();
+                  _pin = '';
+                  Navigator.of(context).pop(); // Close the PIN dialog
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please enter your PIN.'),
+                    ),
+                  );
+                }
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +135,7 @@ class BalanceScreenState extends State<BalanceScreen> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/bg.jpg'),
+              image: AssetImage('assets/images/bg.jpg'), // Background image
               fit: BoxFit.cover,
             ),
           ),
@@ -60,7 +163,6 @@ class BalanceScreenState extends State<BalanceScreen> {
                                     fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 10),
-                              // Move the account number Row above the Total Balance label
                               Row(
                                 children: [
                                   Text(
@@ -139,9 +241,8 @@ class BalanceScreenState extends State<BalanceScreen> {
                         child: ListTile(
                           leading: const Icon(Icons.savings),
                           title: const Text('Save for an emergency'),
-                          onTap: () {
-                            // Implement saving navigation or functionality here
-                          },
+                          onTap:
+                              _showAmountDialog, // Show the amount dialog when tapped
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -157,10 +258,10 @@ class BalanceScreenState extends State<BalanceScreen> {
                           scrollDirection: Axis.horizontal,
                           children: const [
                             AdsCard(
-                                adTitle: 'Ad 1',
-                                color: Colors.red), // Use the AdsCard widget
-                            AdsCard(adTitle: 'Ad 2', color: Colors.blue),
-                            AdsCard(adTitle: 'Ad 3', color: Colors.green),
+                                imagePath:
+                                    'assets/images/ad1.jpeg'), // Use the AdsCard widget
+                            AdsCard(imagePath: 'assets/images/ad2.jpg'),
+                            AdsCard(imagePath: 'assets/images/ad3.jpg'),
                           ],
                         ),
                       ),
