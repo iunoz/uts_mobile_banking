@@ -64,7 +64,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
       return;
     }
 
-    void _resetForm() {
+    void resetForm() {
       setState(() {
         _selectedImage = null;
         _nearestBankController.clear();
@@ -98,7 +98,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                 Navigator.of(context).pop();
                 _showAlertDialog('Success',
                     'Request submitted successfully! Your request will be stored in notifications; please wait for further notifications from the nearest bank branch. thank you!');
-                _resetForm(); // jika sudah sukses maka semua input user akan di hapus atau direset
+                resetForm(); // jika sudah sukses maka semua input user akan di hapus atau direset
               },
             ),
           ],

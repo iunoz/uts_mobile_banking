@@ -30,7 +30,8 @@ flutter:
   uses-material-design: true
   assets:
     - lib/Anime Hijau.jpg # Path ke gambar splash screen
-
+    - lib/SUMI MOBILE.jpg
+    - lib/Splash.jpg
     - assets/images/spay.jpg
     - assets/images/gopay.png
     - assets/images/dana.png
@@ -60,10 +61,12 @@ flutter:
     - assets/images/login_screen_bg.png
 
 flutter_native_splash:
-  color: "#FFFFFF" # Warna splash screen
-  image: "lib/Anime Hijau.jpg" # Path splash screen
+  image: lib/Anime Hijau.jpg
+  color: "#ffffff" # Warna background splash screen
+  android: true
+  ios: true
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "lib/Anime Hijau.jpg" # Ganti dengan path ke gambar ikon Anda
+  image_path: "lib/SUMI MOBILE.jpg" # Ganti dengan path ke gambar ikon Anda
