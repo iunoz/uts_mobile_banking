@@ -34,31 +34,40 @@ class _TransferDetailScreenState extends State<TransferDetailScreen> {
         ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Tambahkan untuk mengatur alignment
           children: [
             Text(
               'Transfer to ${widget.accountName}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white), // Ubah warna teks menjadi putih
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black), // Ubah warna teks menjadi hitam
             ),
             const SizedBox(height: 16),
             Text(
               'Account Number: ${widget.accountNumber}',
-              style: const TextStyle(fontSize: 16, color: Colors.white), // Ubah warna teks menjadi putih
+              style: const TextStyle(fontSize: 16, color: Colors.black), // Ubah warna teks menjadi hitam
             ),
             const SizedBox(height: 24),
-            TextField(
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Amount (Rp)',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: _messageController,
-              decoration: const InputDecoration(
-                labelText: 'Message (optional)',
-                border: OutlineInputBorder(),
+            // Container untuk background putih pada input
+            Container(
+              color: Colors.white, // Ubah background menjadi putih
+              child: Column(
+                children: [
+                  TextField(
+                    controller: _amountController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      labelText: 'Amount (Rp)',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: _messageController,
+                    decoration: const InputDecoration(
+                      labelText: 'Message (optional)',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 24),

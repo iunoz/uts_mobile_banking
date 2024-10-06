@@ -24,8 +24,7 @@ class InteraccounttransferScreen extends StatelessWidget {
         // Tambahkan background image
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image:
-                AssetImage('assets/images/bg.jpg'), // Path ke background image
+            image: AssetImage('assets/images/bg.jpg'), // Path ke background image
             fit: BoxFit.cover, // Sesuaikan gambar dengan layar
           ),
         ),
@@ -76,18 +75,21 @@ class InteraccounttransferScreen extends StatelessWidget {
   Widget _buildAccountCard(
       BuildContext context, String accountName, String accountNumber) {
     return Card(
-      color: Colors.grey[200],
+      color: const Color(0xFF7EBDA6), // Ganti warna kartu menjadi warna baru
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15), // Tambahkan border radius
       ),
       child: ListTile(
         leading: const Icon(Icons.account_circle,
-            size: 40, color: Color(0xFF7EBDA6)), // Ganti dengan warna baru
+            size: 40, color: Colors.white), // Ganti dengan warna putih
         title: Text(
           accountName,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white), // Ubah warna teks menjadi putih
         ),
-        subtitle: Text("Account Number: $accountNumber"),
+        subtitle: Text(
+          "Account Number: $accountNumber",
+          style: const TextStyle(color: Colors.white), // Ubah warna teks menjadi putih
+        ),
         trailing: ElevatedButton(
           onPressed: () async {
             // Navigasi ke TransferDetailScreen dan dapatkan hasilnya
@@ -112,10 +114,9 @@ class InteraccounttransferScreen extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(15), // Tambahkan border radius
+              borderRadius: BorderRadius.circular(15), // Tambahkan border radius
             ),
-            backgroundColor: const Color(0xFF7EBDA6), // Ganti dengan warna baru
+            backgroundColor: const Color(0xFF00796B), // Ganti dengan warna baru
           ),
           child: const Text(
             "Transfer",
