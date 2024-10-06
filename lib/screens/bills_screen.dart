@@ -6,6 +6,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: BillsScreen(),
+      home: const BillsScreen(),
     );
   }
 }
@@ -71,7 +73,7 @@ class BillsScreen extends StatelessWidget {
                         children: [
                           Text('Amount to pay: Rp $amount'),
                           const SizedBox(height: 10),
-                          Text('Would you like to pay now or later?'),
+                          const Text('Would you like to pay now or later?'),
                         ],
                       )
                     : Text('There are no bills for $title.'),
@@ -135,7 +137,7 @@ class BillsScreen extends StatelessWidget {
             children: [
               Text(
                 'Enter PIN to Pay Rp $amount',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               TextField(
@@ -158,7 +160,7 @@ class BillsScreen extends StatelessWidget {
                   } else {
                     // Show a snackbar or dialog if PIN is invalid
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                           content: Text('Invalid PIN. Please enter 6 digits.')),
                     );
                   }
