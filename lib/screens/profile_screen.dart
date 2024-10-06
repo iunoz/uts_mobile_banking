@@ -93,177 +93,183 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Container(
                 color: Colors.white.withOpacity(0.5),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    // Card information
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.teal.shade50,
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 1,
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      // Card information
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.teal.shade50,
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 1,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Card type
+                            const Text(
+                              "Card Type",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+
+                            // Card name
+                            const Text(
+                              "EMERALD Debit",
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+
+                            // Card image
+                            const SizedBox(height: 10),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors
+                                    .white, // Add a background color if needed
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              clipBehavior:
+                                  Clip.antiAlias, // Untuk sisi rounded
+                              child: Image.asset(
+                                'assets/images/kartudebit.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+
+                            // Cardholder name
+                            const SizedBox(height: 20),
+                            const Text(
+                              "Cardholder Name",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+
+                            // Cardholder name value
+                            const Text(
+                              "Gregorius Nathanyel Benedict",
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+
+                            // Card number
+                            const SizedBox(height: 20),
+                            const Text(
+                              "Card Number",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+
+                            // Card number value
+                            const Text(
+                              "1234 5678 9123 4567",
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                      // Actions Row
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          // Card type
-                          const Text(
-                            "Card Type",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: _buildActionColumn(
+                              icon: Icons.attach_money,
+                              label: "Set\nLimit",
+                              color: const Color(0xFF02854f),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const SetLimitScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-                          const SizedBox(height: 10),
-
-                          // Card name
-                          const Text(
-                            "EMERALD Debit",
-                            style: TextStyle(
-                              fontSize: 16,
+                          const SizedBox(width: 16), // Space between columns
+                          Expanded(
+                            child: _buildActionColumn(
+                              icon: Icons.block,
+                              label: "Block\nCard",
+                              color: const Color(0xFFd8210b),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const BlockCardScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-
-                          // Card image
-                          const SizedBox(height: 10),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors
-                                  .white, // Add a background color if needed
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 5,
-                                  offset: Offset(0, 2),
-                                ),
-                              ],
-                            ),
-                            clipBehavior: Clip.antiAlias, // Untuk sisi rounded
-                            child: Image.asset(
-                              'assets/images/kartudebit.png',
-                              fit: BoxFit.cover,
+                          const SizedBox(width: 16), // Space between columns
+                          Expanded(
+                            child: _buildActionColumn(
+                              icon: Icons.credit_card,
+                              label: "Change Card",
+                              color: const Color(0xFFd99a3d),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ChangeCardScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-
-                          // Cardholder name
-                          const SizedBox(height: 20),
-                          const Text(
-                            "Cardholder Name",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-
-                          // Cardholder name value
-                          const Text(
-                            "Gregorius Nathanyel Benedict",
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-
-                          // Card number
-                          const SizedBox(height: 20),
-                          const Text(
-                            "Card Number",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-
-                          // Card number value
-                          const Text(
-                            "1234 5678 9123 4567",
-                            style: TextStyle(
-                              fontSize: 16,
+                          const SizedBox(width: 16), // Space between columns
+                          Expanded(
+                            child: _buildActionColumn(
+                              icon: Icons.lock,
+                              label: "Change Pin",
+                              color: const Color(0xFF009baa),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ChangePinScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ],
                       ),
-                    ),
-
-                    // Actions Row
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: _buildActionColumn(
-                            icon: Icons.attach_money,
-                            label: "Set\nLimit",
-                            color: const Color(0xFF02854f),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SetLimitScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 16), // Space between columns
-                        Expanded(
-                          child: _buildActionColumn(
-                            icon: Icons.block,
-                            label: "Block\nCard",
-                            color: const Color(0xFFd8210b),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const BlockCardScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 16), // Space between columns
-                        Expanded(
-                          child: _buildActionColumn(
-                            icon: Icons.credit_card,
-                            label: "Change Card",
-                            color: const Color(0xFFd99a3d),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ChangeCardScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 16), // Space between columns
-                        Expanded(
-                          child: _buildActionColumn(
-                            icon: Icons.lock,
-                            label: "Change Pin",
-                            color: const Color(0xFF009baa),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const ChangePinScreen(),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -275,52 +281,60 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CustomButton(
-              buttonText: 'Home',
-              destination: HomeScreen(),
-              color: Color(0xFF7EBDA6),
-              icon: Icons.home,
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              usePushReplacement: true,
-              borderRadius: 18,
-              iconSize: 22,
-              transitionType: PageTransitionType.slideRight,
+            Flexible(
+              child: CustomButton(
+                buttonText: 'Home',
+                destination: HomeScreen(),
+                color: Color(0xFF7EBDA6),
+                icon: Icons.home,
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                usePushReplacement: true,
+                iconSize: 22,
+                borderRadius: 15,
+              ),
             ),
-            CustomButton(
-              buttonText: 'QRIS',
-              destination: QrisScreen(),
-              color: Color(0xFF7EBDA6),
-              icon: Icons.qr_code,
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              usePushReplacement: true,
-              borderRadius: 18,
-              iconSize: 22,
+            Flexible(
+              child: CustomButton(
+                buttonText: 'QRIS',
+                destination: QrisScreen(),
+                color: Color(0xFF7EBDA6),
+                icon: Icons.qr_code,
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                usePushReplacement: true,
+                borderRadius: 15,
+                iconSize: 22,
+                transitionType: PageTransitionType.slideLeft,
+              ),
             ),
-            CustomButton(
-              buttonText: 'Notif',
-              destination: NotificationScreen(),
-              color: Color(0xFF7EBDA6),
-              icon: Icons.notifications,
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              usePushReplacement: true,
-              borderRadius: 18,
-              iconSize: 22,
-              transitionType: PageTransitionType.slideLeft,
+            Flexible(
+              child: CustomButton(
+                buttonText: 'Notif',
+                destination: NotificationScreen(),
+                color: Color(0xFF7EBDA6),
+                icon: Icons.notifications,
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                usePushReplacement: true,
+                borderRadius: 15,
+                iconSize: 22,
+                transitionType: PageTransitionType.slideLeft,
+              ),
             ),
-            CustomButton(
-              buttonText: 'Profile',
-              destination: ProfileScreen(),
-              color: Color(0xFF7EBDA6),
-              icon: Icons.account_circle_rounded,
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              usePushReplacement: true,
-              borderRadius: 18,
-              iconSize: 22,
-              transitionType: PageTransitionType.slideLeft,
+            Flexible(
+              child: CustomButton(
+                buttonText: 'Profile',
+                destination: ProfileScreen(),
+                color: Color(0xFF7EBDA6),
+                icon: Icons.account_circle_rounded,
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                usePushReplacement: true,
+                borderRadius: 15,
+                iconSize: 22,
+                transitionType: PageTransitionType.slideLeft,
+              ),
             ),
           ],
         ),
