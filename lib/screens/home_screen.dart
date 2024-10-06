@@ -116,7 +116,7 @@ class HomeScreenState extends State<HomeScreen> {
                           const CustomButton(
                             buttonText: 'More',
                             destination: BalanceScreen(),
-                            color: const Color(0xFF7EBDA6),
+                            color: Color(0xFF7EBDA6),
                             borderRadius: 20,
                           )
                         ],
@@ -149,7 +149,7 @@ class HomeScreenState extends State<HomeScreen> {
                           color: Colors.white.withOpacity(0.1),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: Offset(0, 3), // posisi bayangan
+                          offset: const Offset(0, 3), // posisi bayangan
                         ),
                       ],
                     ),
@@ -239,27 +239,25 @@ class HomeScreenState extends State<HomeScreen> {
             ),
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: const BottomAppBar(
         color: Color(0xFF7EBDA6),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Flexible(
               child: CustomButton(
-                buttonText: 'Home',
                 destination: HomeScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.home,
                 textColor: Colors.white,
                 iconColor: Colors.white,
                 usePushReplacement: true,
-                iconSize: 22,
+                iconSize: 25,
                 borderRadius: 15,
               ),
             ),
             Flexible(
               child: CustomButton(
-                buttonText: 'QRIS',
                 destination: QrisScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.qr_code,
@@ -267,13 +265,12 @@ class HomeScreenState extends State<HomeScreen> {
                 iconColor: Colors.white,
                 usePushReplacement: true,
                 borderRadius: 15,
-                iconSize: 22,
+                iconSize: 25,
                 transitionType: PageTransitionType.slideLeft,
               ),
             ),
             Flexible(
               child: CustomButton(
-                buttonText: 'Notif',
                 destination: NotificationScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.notifications,
@@ -281,13 +278,12 @@ class HomeScreenState extends State<HomeScreen> {
                 iconColor: Colors.white,
                 usePushReplacement: true,
                 borderRadius: 15,
-                iconSize: 22,
+                iconSize: 25,
                 transitionType: PageTransitionType.slideLeft,
               ),
             ),
             Flexible(
               child: CustomButton(
-                buttonText: 'Profile',
                 destination: ProfileScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.account_circle_rounded,
@@ -295,7 +291,7 @@ class HomeScreenState extends State<HomeScreen> {
                 iconColor: Colors.white,
                 usePushReplacement: true,
                 borderRadius: 15,
-                iconSize: 22,
+                iconSize: 25,
                 transitionType: PageTransitionType.slideLeft,
               ),
             ),

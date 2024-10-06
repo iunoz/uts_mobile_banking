@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'page_transition.dart';
 
 class CustomButton extends StatelessWidget {
-  final String buttonText;
+  final String? buttonText;
   final Widget destination;
   final Color color;
   final IconData? icon; //opsional
@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
   final bool usePushAndRemoveUntil;
 
   const CustomButton({
-    required this.buttonText,
+    this.buttonText,
     required this.destination,
     required this.color,
     this.icon, //opsional
@@ -69,13 +69,14 @@ class CustomButton extends StatelessWidget {
               size: iconSize ?? 30,
               color: iconColor ?? Colors.black,
             ),
-          Text(
-            buttonText,
-            style: TextStyle(
-              fontSize: textSize ?? 14,
-              color: textColor ?? Colors.black,
+          if (buttonText != null)
+            Text(
+              buttonText!,
+              style: TextStyle(
+                fontSize: textSize ?? 14,
+                color: textColor ?? Colors.black,
+              ),
             ),
-          ),
         ],
       ),
     );

@@ -283,21 +283,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Flexible(
               child: CustomButton(
-                buttonText: 'Home',
                 destination: HomeScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.home,
                 textColor: Colors.white,
                 iconColor: Colors.white,
                 usePushReplacement: true,
-                iconSize: 22,
+                iconSize: 25,
                 borderRadius: 15,
                 transitionType: PageTransitionType.slideRight,
               ),
             ),
             Flexible(
               child: CustomButton(
-                buttonText: 'QRIS',
                 destination: QrisScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.qr_code,
@@ -305,13 +303,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 iconColor: Colors.white,
                 usePushReplacement: true,
                 borderRadius: 15,
-                iconSize: 22,
+                iconSize: 25,
                 transitionType: PageTransitionType.slideRight,
               ),
             ),
             Flexible(
               child: CustomButton(
-                buttonText: 'Notif',
                 destination: NotificationScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.notifications,
@@ -319,13 +316,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 iconColor: Colors.white,
                 usePushReplacement: true,
                 borderRadius: 15,
-                iconSize: 22,
+                iconSize: 25,
                 transitionType: PageTransitionType.slideRight,
               ),
             ),
             Flexible(
               child: CustomButton(
-                buttonText: 'Profile',
                 destination: ProfileScreen(),
                 color: Color(0xFF7EBDA6),
                 icon: Icons.account_circle_rounded,
@@ -333,7 +329,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 iconColor: Colors.white,
                 usePushReplacement: true,
                 borderRadius: 15,
-                iconSize: 22,
+                iconSize: 25,
                 transitionType: PageTransitionType.slideLeft,
               ),
             ),
