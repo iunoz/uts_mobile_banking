@@ -18,19 +18,19 @@ dependencies:
   lottie: ^3.1.2
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.0.0
+  animated_splash_screen: ^1.3.0
 
 dev_dependencies:
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.10.0 # Dependency ikon aplikasi
-  flutter_native_splash: ^2.0.0 # Dependency splash screen
 
 flutter:
   uses-material-design: true
   assets:
     - lib/Anime Hijau.jpg # Path ke gambar splash screen
-    - lib/SUMI MOBILE.jpg
+    - lib/Sumi_Mobile_PP.jpg
     - lib/Splash.jpg
     - assets/images/spay.jpg
     - assets/images/gopay.png
@@ -63,14 +63,11 @@ flutter:
     - assets/images/ads1.jpeg
     - assets/images/ads2.jpeg
     - assets/images/ads3.jpeg
-
-flutter_native_splash:
-  image: lib/Anime Hijau.jpg
-  color: "#ffffff" # Warna background splash screen
-  android: true
-  ios: true
+    - assets/images/ad1.jpeg
+    - assets/animations/Animation - 1728215250294.json
+    - assets/animations/
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "lib/SUMI MOBILE.jpg" # Ganti dengan path ke gambar ikon Anda
+  image_path: "lib/Sumi_Mobile_PP.jpg" # Ganti dengan path ke gambar ikon Anda
