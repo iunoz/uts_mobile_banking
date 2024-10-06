@@ -17,6 +17,7 @@ class BalanceScreenState extends State<BalanceScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Balance Screen'),
+        backgroundColor: Colors.teal,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
