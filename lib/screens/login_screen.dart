@@ -37,7 +37,7 @@ class LoginScreenState extends State<LoginScreen> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/login_screen_bg.jpeg'),
+            image: AssetImage('assets/images/login_screen_bg.png'),
             fit: BoxFit.cover,
           ),
         ),
