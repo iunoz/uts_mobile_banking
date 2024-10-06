@@ -162,7 +162,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
             ),
           ),
           Container(
-            color: Colors.white.withOpacity(0.5), // Transparansi 50%
+            color: Colors.white.withOpacity(0.5),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),

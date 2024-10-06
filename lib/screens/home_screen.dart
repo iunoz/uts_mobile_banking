@@ -137,19 +137,16 @@ class HomeScreenState extends State<HomeScreen> {
                     height: 15,
                   ),
                   Container(
-                    padding:
-                        const EdgeInsets.all(10.0), // padding untuk container
+                    padding: const EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF7EBDA6).withOpacity(
-                          0.5), // warna background dengan transparansi
-                      borderRadius: BorderRadius.circular(
-                          15), // sudut melengkung pada container
+                      color: const Color(0xFF7EBDA6).withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.white.withOpacity(0.1),
                           spreadRadius: 5,
                           blurRadius: 7,
-                          offset: const Offset(0, 3), // posisi bayangan
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),

@@ -66,7 +66,8 @@ class LoginScreenState extends State<LoginScreen> {
                   tag: 'loginImage',
                   child: CircleAvatar(
                     radius: 85,
-                    backgroundImage: AssetImage('lib/Anime Hijau.jpg'),
+                    backgroundImage:
+                        AssetImage('assets/images/Anime Hijau.jpg'),
                   ),
                 ),
                 const SizedBox(height: 50),

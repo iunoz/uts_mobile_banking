@@ -309,8 +309,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                                             color: Colors.black54,
                                             shape: BoxShape.circle,
                                           ),
-                                          padding: const EdgeInsets.all(
-                                              4), // Tambahkan padding untuk ukuran ikon
+                                          padding: const EdgeInsets.all(4),
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.white,
