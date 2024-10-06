@@ -9,8 +9,8 @@ class BalanceScreen extends StatefulWidget {
 }
 
 class BalanceScreenState extends State<BalanceScreen> {
-  bool _isBalanceHidden =
-      true; // This boolean will track whether the balance is hidden or shown
+  bool _isBalanceHidden = true; // Tracks visibility of the balance
+  bool _isAccountNumberHidden = true; // Tracks visibility of the account number
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,36 @@ class BalanceScreenState extends State<BalanceScreen> {
                                 'Account - 1234 5678 9123 4567',
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 10),
+                              // Move the account number Row above the Total Balance label
+                              Row(
+                                children: [
+                                  Text(
+                                    _isAccountNumberHidden
+                                        ? '●●●●●●●●' // Hide account number if _isAccountNumberHidden is true
+                                        : '4444.4444', // Show account number if _isAccountNumberHidden is false
+                                    style: const TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const Spacer(),
+                                  IconButton(
+                                    icon: Icon(
+                                      _isAccountNumberHidden
+                                          ? Icons
+                                              .visibility_off // Show "eye closed" icon if account number is hidden
+                                          : Icons
+                                              .visibility, // Show "eye open" icon if account number is visible
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _isAccountNumberHidden =
+                                            !_isAccountNumberHidden; // Toggle the account number visibility
+                                      });
+                                    },
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 10),
                               const Text(
