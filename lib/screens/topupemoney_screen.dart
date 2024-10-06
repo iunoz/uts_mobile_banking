@@ -36,15 +36,14 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); //tutup window setelah tekan cancel
+                Navigator.of(context).pop();
               },
               child: const Text("Cancel"),
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pop(); // tutup dialog setelah tekan confirm
-                _showPinDialog(); // tampilkan dialog input pin setelah tekan confirm
+                Navigator.of(context).pop();
+                _showPinDialog();
               },
               child: const Text("Confirm"),
             ),
@@ -73,15 +72,14 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                   hintText: "Enter PIN",
                 ),
                 keyboardType: TextInputType.number,
-                obscureText: true, // supaya pin atm yg diinput ga keliatan
+                obscureText: true,
               ),
             ],
           ),
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pop(); // kalo tekan cancel, maka window input pin akan ditutup
+                Navigator.of(context).pop();
               },
               child: const Text("Cancel"),
             ),
@@ -89,17 +87,15 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
               onPressed: () {
                 String pin = pinController.text;
                 if (pin.isNotEmpty) {
-                  Navigator.of(context)
-                      .pop(); // tutup window pin setelah input pin dan tekan confirm
+                  Navigator.of(context).pop();
                   _showAlertDialog(
-                    // menampilkan window sukses top up setelah tekan confirm
                     'Success!',
                     'Top up using $selectedEmoney for number ${phoneController.text} succeeded',
                   );
-                  _resetForm(); // Reset form setelah sukses
+                  _resetForm();
                 } else {
-                  _showAlertDialog('Can Not Process',
-                      'Please enter a valid PIN.'); // tampilkan window error jika pin tidak diinput
+                  _showAlertDialog(
+                      'Can Not Process', 'Please enter a valid PIN.');
                 }
               },
               child: const Text("Confirm"),
@@ -145,7 +141,12 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
         backgroundColor: const Color(0xFF7EBDA6),
       ),
       body: Container(
-        color: const Color.fromARGB(255, 229, 249, 246),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,9 +218,9 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
             const SizedBox(height: 50),
             Container(
               decoration: BoxDecoration(
-                color: const Color(0xFF7EBDA6),
+                color: Colors.grey.shade100.withOpacity(0.8),
                 border: Border.all(color: Colors.grey.shade300),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(12),
               ),
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -262,6 +263,11 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                 onPressed: confirmTopUp,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF7EBDA6),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
                 child: const Text(
                   "Confirm for Top Up",

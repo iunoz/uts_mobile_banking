@@ -66,10 +66,10 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
 
     void _resetForm() {
       setState(() {
-        _selectedImage = null; 
-        _nearestBankController.clear(); 
-        _selectedReason = null; 
-        _isDamagedCardSelected = false; 
+        _selectedImage = null;
+        _nearestBankController.clear();
+        _selectedReason = null;
+        _isDamagedCardSelected = false;
       });
     }
 
@@ -144,7 +144,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/tatsumi.png'),
+                image: AssetImage('assets/images/bg.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -159,7 +159,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade300),
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade100.withOpacity(0.8),
                     ),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -240,7 +240,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                       absorbing: !_isDamagedCardSelected,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
+                          color: Colors.grey.shade100.withOpacity(0.8),
                           border: Border.all(
                             color: _isDamagedCardSelected
                                 ? Colors.grey.shade300
@@ -275,18 +275,21 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                               ),
                               child: Stack(
                                 children: [
-                                  _selectedImage != null
-                                      ? Image.file(
-                                          _selectedImage!,
-                                          fit: BoxFit.cover,
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                        )
-                                      : const Center(
-                                          child: Icon(Icons.image,
-                                              size: 50,
-                                              color: Color(0xFF7EBDA6)),
-                                        ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: _selectedImage != null
+                                        ? Image.file(
+                                            _selectedImage!,
+                                            fit: BoxFit.cover,
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                          )
+                                        : const Center(
+                                            child: Icon(Icons.image,
+                                                size: 50,
+                                                color: Color(0xFF7EBDA6)),
+                                          ),
+                                  ),
                                   if (_selectedImage != null)
                                     Positioned(
                                       top: 5,
@@ -298,6 +301,8 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                                             color: Colors.black54,
                                             shape: BoxShape.circle,
                                           ),
+                                          padding: const EdgeInsets.all(
+                                              4), // Tambahkan padding untuk ukuran ikon
                                           child: const Icon(
                                             Icons.close,
                                             color: Colors.white,
@@ -317,7 +322,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                   const SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade100.withOpacity(0.8),
                       border: Border.all(color: Colors.grey.shade300),
                       borderRadius: BorderRadius.circular(12),
                     ),
