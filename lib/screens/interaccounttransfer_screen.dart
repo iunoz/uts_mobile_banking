@@ -20,54 +20,62 @@ class InteraccounttransferScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Container(
-        // Tambahkan background image
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image:
-                AssetImage('assets/images/bg.jpg'), // Path ke background image
-            fit: BoxFit.cover, // Sesuaikan gambar dengan layar
+      body: Stack(
+        children: [
+          // Latar belakang gambar
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Stack(children: [
+              Container(
+                color: Colors.white.withOpacity(0.5),
+              ),
+            ]),
           ),
-        ),
-        child: SingleChildScrollView(
-          // Gunakan SingleChildScrollView di sini
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              // List account cards (seperti sebelumnya)
-              _buildAccountCard(
-                context,
-                "Ryan Hermanto",
-                "535230147",
-              ),
-              _buildAccountCard(
-                context,
-                "Irene Carl Lewis",
-                "535230185",
-              ),
-              _buildAccountCard(
-                context,
-                "Paquita Melawi",
-                "535230062",
-              ),
-              _buildAccountCard(
-                context,
-                "Panicia",
-                "535230059",
-              ),
-              _buildAccountCard(
-                context,
-                "Melfanny Leono",
-                "535230152",
-              ),
-              _buildAccountCard(
-                context,
-                "Gregorius Nathanyel Benedict",
-                "535230114",
-              ),
-            ],
+          SingleChildScrollView(
+            // Gunakan SingleChildScrollView di sini
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                // List account cards (seperti sebelumnya)
+                _buildAccountCard(
+                  context,
+                  "Ryan Hermanto",
+                  "535230147",
+                ),
+                _buildAccountCard(
+                  context,
+                  "Irene Carl Lewis",
+                  "535230185",
+                ),
+                _buildAccountCard(
+                  context,
+                  "Paquita Melawi",
+                  "535230062",
+                ),
+                _buildAccountCard(
+                  context,
+                  "Panicia",
+                  "535230059",
+                ),
+                _buildAccountCard(
+                  context,
+                  "Melfanny Leono",
+                  "535230152",
+                ),
+                _buildAccountCard(
+                  context,
+                  "Gregorius Nathanyel Benedict",
+                  "535230114",
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -107,7 +115,8 @@ class InteraccounttransferScreen extends StatelessWidget {
               ),
             );
 
-            if (result == true) {
+            // Cek jika context masih valid sebelum menggunakannya
+            if (context.mounted && result == true) {
               // Tampilkan notifikasi jika transfer berhasil
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
