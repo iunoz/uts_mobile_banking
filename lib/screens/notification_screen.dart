@@ -31,6 +31,9 @@ class NotificationScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
+          Container(
+            color: Colors.white.withOpacity(0.5),
+          ),
           ListView(
             padding: const EdgeInsets.all(10),
             children: [
@@ -87,14 +90,14 @@ class NotificationScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: const BottomAppBar(
-        color: const Color(0xFF7EBDA6),
+        color: Color(0xFF7EBDA6),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomButton(
               buttonText: 'Home',
               destination: HomeScreen(),
-              color: const Color(0xFF7EBDA6),
+              color: Color(0xFF7EBDA6),
               icon: Icons.home,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -106,7 +109,7 @@ class NotificationScreen extends StatelessWidget {
             CustomButton(
               buttonText: 'QRIS',
               destination: QrisScreen(),
-              color: const Color(0xFF7EBDA6),
+              color: Color(0xFF7EBDA6),
               icon: Icons.qr_code,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -118,7 +121,7 @@ class NotificationScreen extends StatelessWidget {
             CustomButton(
               buttonText: 'Notif',
               destination: NotificationScreen(),
-              color: const Color(0xFF7EBDA6),
+              color: Color(0xFF7EBDA6),
               icon: Icons.notifications,
               textColor: Colors.white,
               iconColor: Colors.white,
@@ -129,7 +132,7 @@ class NotificationScreen extends StatelessWidget {
             CustomButton(
               buttonText: 'Profile',
               destination: ProfileScreen(),
-              color: const Color(0xFF7EBDA6),
+              color: Color(0xFF7EBDA6),
               icon: Icons.account_circle_rounded,
               textColor: Colors.white,
               iconColor: Colors.white,

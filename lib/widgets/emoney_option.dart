@@ -28,7 +28,7 @@ class EmoneyOption extends StatelessWidget {
           border: Border.all(
             color: isSelected
                 ? const Color(0xFF7EBDA6)
-                : Colors.grey.shade100.withOpacity(0.8),
+                : Colors.grey.shade300.withOpacity(0.9),
             width: 2,
           ),
           borderRadius: BorderRadius.circular(10),

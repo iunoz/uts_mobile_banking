@@ -131,14 +131,19 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Change Card'),
-        backgroundColor: const Color(0xFF7EBDA6),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 12),
-          )
-        ],
-      ),
+          backgroundColor: const Color(0xFF7EBDA6),
+          title: const Text(
+            "Change Card",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          centerTitle: true,
+          iconTheme: const IconThemeData(
+            color: Colors.white,
+          )),
       body: Stack(
         children: [
           Container(
@@ -148,6 +153,9 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                 fit: BoxFit.cover,
               ),
             ),
+          ),
+          Container(
+            color: Colors.white.withOpacity(0.5),
           ),
           SingleChildScrollView(
             child: Padding(
