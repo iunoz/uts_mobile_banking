@@ -379,7 +379,6 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

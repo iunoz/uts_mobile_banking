@@ -289,8 +289,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                     ),
                     child: const Text(
                       "Confirm for Top Up",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
