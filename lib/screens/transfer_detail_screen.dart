@@ -23,20 +23,26 @@ class _TransferDetailScreenState extends State<TransferDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transfer Details'),
-        backgroundColor: Colors.teal,
+        backgroundColor: Color(0xFF00796B), // Menggunakan warna teal yang baru
       ),
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg.jpg'), // Path ke background image
+            fit: BoxFit.cover, // Sesuaikan gambar dengan layar
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Text(
               'Transfer to ${widget.accountName}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white), // Ubah warna teks menjadi putih
             ),
             const SizedBox(height: 16),
             Text(
               'Account Number: ${widget.accountNumber}',
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16, color: Colors.white), // Ubah warna teks menjadi putih
             ),
             const SizedBox(height: 24),
             TextField(
@@ -72,12 +78,17 @@ class _TransferDetailScreenState extends State<TransferDetailScreen> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal,
+                backgroundColor: Color(0xFF00796B), // Menggunakan warna teal yang baru
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0), // Kotak
+                  borderRadius: BorderRadius.circular(10), // Tambahkan border radius
                 ),
               ),
-              child: const Text('Send'),
+              child: const Text(
+                'Send',
+                style: TextStyle(
+                  color: Colors.white, // Ubah warna teks menjadi putih
+                ),
+              ),
             ),
           ],
         ),

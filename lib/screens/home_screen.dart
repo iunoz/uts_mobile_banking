@@ -117,6 +117,7 @@ class HomeScreenState extends State<HomeScreen> {
                             buttonText: 'More',
                             destination: BalanceScreen(),
                             color: Color(0xFF7EBDA6),
+                            textColor: Colors.white,
                             borderRadius: 20,
                           )
                         ],

@@ -139,6 +139,7 @@ class _ResultQrScreenState extends State<ResultQrScreen> {
                       buttonText: 'Pay',
                       destination: const HomeScreen(),
                       color: const Color(0xFF7EBDA6),
+                      borderRadius: 4 + 1,
                       textColor: Colors.white,
                       usePushAndRemoveUntil: true,
                       transitionType: PageTransitionType.fade,

@@ -260,8 +260,8 @@ class BalanceScreenState extends State<BalanceScreen> {
                             AdsCard(
                                 imagePath:
                                     'assets/images/ad1.jpeg'), // Use the AdsCard widget
-                            AdsCard(imagePath: 'assets/images/ad2.jpg'),
-                            AdsCard(imagePath: 'assets/images/ad3.jpg'),
+                            AdsCard(imagePath: 'assets/images/ads3.jpeg'),
+                            AdsCard(imagePath: 'assets/images/ads2.jpeg'),
                           ],
                         ),
                       ),

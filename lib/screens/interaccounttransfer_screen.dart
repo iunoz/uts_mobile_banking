@@ -9,7 +9,7 @@ class InteraccounttransferScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Inter-account Transfer",
+          "Inter-Account Transfer",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -17,17 +17,20 @@ class InteraccounttransferScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF7EBDA6), // Ganti dengan warna baru
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
       body: Container(
         // Tambahkan background image
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/bg.jpg'), // Path ke background image
+            image:
+                AssetImage('assets/images/bg.jpg'), // Path ke background image
             fit: BoxFit.cover, // Sesuaikan gambar dengan layar
           ),
         ),
-        child: SingleChildScrollView( // Gunakan SingleChildScrollView di sini
+        child: SingleChildScrollView(
+          // Gunakan SingleChildScrollView di sini
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
@@ -70,11 +73,16 @@ class InteraccounttransferScreen extends StatelessWidget {
   }
 
   // Fungsi untuk membangun kartu akun
-  Widget _buildAccountCard(BuildContext context, String accountName, String accountNumber) {
+  Widget _buildAccountCard(
+      BuildContext context, String accountName, String accountNumber) {
     return Card(
       color: Colors.grey[200],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15), // Tambahkan border radius
+      ),
       child: ListTile(
-        leading: const Icon(Icons.account_circle, size: 40, color: Color(0xFF7EBDA6)), // Ganti dengan warna baru
+        leading: const Icon(Icons.account_circle,
+            size: 40, color: Color(0xFF7EBDA6)), // Ganti dengan warna baru
         title: Text(
           accountName,
           style: const TextStyle(fontWeight: FontWeight.bold),
@@ -104,7 +112,8 @@ class InteraccounttransferScreen extends StatelessWidget {
           },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0), // Persegi panjang
+              borderRadius:
+                  BorderRadius.circular(15), // Tambahkan border radius
             ),
             backgroundColor: const Color(0xFF7EBDA6), // Ganti dengan warna baru
           ),
