@@ -16,35 +16,57 @@ class VirtualAccountScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Center(
-              child: Text(
-                'Select Virtual Account:',
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+      body: Stack(
+        children: [
+          // Latar belakang gambar
+          Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/bg.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
+              child: Stack(children: [
+                Container(
+                  color: Colors.white.withOpacity(0.5),
+                ),
+              ])),
+          // Konten utama
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Center(
+                  child: Text(
+                    'Select Virtual Account:',
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView(
+                    children: const [
+                      InstitutionTile(institutionName: 'PLN'),
+                      InstitutionTile(institutionName: 'Education'),
+                      InstitutionTile(institutionName: 'Telecom'),
+                      InstitutionTile(institutionName: 'Tax'),
+                      InstitutionTile(institutionName: 'Installments'),
+                      InstitutionTile(institutionName: 'Insurance'),
+                      InstitutionTile(institutionName: 'PDAM'),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView(
-                children: const [
-                  InstitutionTile(institutionName: 'PLN'),
-                  InstitutionTile(institutionName: 'Education'),
-                  InstitutionTile(institutionName: 'Telecom'),
-                  InstitutionTile(institutionName: 'Tax'),
-                  InstitutionTile(institutionName: 'Installments'),
-                  InstitutionTile(institutionName: 'Insurance'),
-                  InstitutionTile(institutionName: 'PDAM'),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -99,19 +121,38 @@ class PaymentDetailScreen extends StatelessWidget {
               fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: virtualAccounts.length,
-          itemBuilder: (context, index) {
-            return VirtualAccountTile(
-              institutionName: virtualAccounts[index]['name']!,
-              virtualAccountCode: virtualAccounts[index]['code']!,
-            );
-          },
-        ),
+      body: Stack(
+        children: [
+          // Latar belakang gambar
+          Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/bg.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Stack(children: [
+                Container(
+                  color: Colors.white.withOpacity(0.5),
+                ),
+              ])),
+          // Konten utama
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView.builder(
+              itemCount: virtualAccounts.length,
+              itemBuilder: (context, index) {
+                return VirtualAccountTile(
+                  institutionName: virtualAccounts[index]['name']!,
+                  virtualAccountCode: virtualAccounts[index]['code']!,
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -260,69 +301,102 @@ class VirtualAccountInputScreen extends StatelessWidget {
           style: const TextStyle(
               fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Enter Virtual Account Number for $institutionName',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: vaNumberController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Virtual Account Number',
-                hintText: 'Enter the correct VA number',
+      body: Stack(
+        children: [
+          // Latar belakang gambar
+          Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/bg.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                String vaNumber = vaNumberController.text;
-                if (vaNumber.isNotEmpty) {
-                  // Proses pembayaran di sini
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Payment Confirmation'),
-                      content: Text(
-                          'Are you sure you want to proceed with the payment to $institutionName using the Virtual Account Code: $virtualAccountCode and the entered Virtual Account Number: $vaNumber?'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Cancel'),
+              child: Stack(children: [
+                Container(
+                  color: Colors.white.withOpacity(0.5),
+                ),
+              ])),
+          // Konten utama
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Enter Virtual Account Number for $institutionName',
+                  style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: vaNumberController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Virtual Account Number',
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: 'Enter the correct VA number',
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    String vaNumber = vaNumberController.text;
+                    if (vaNumber.isNotEmpty) {
+                      // Proses pembayaran di sini
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('Payment Confirmation'),
+                          content: Text(
+                              'Are you sure you want to proceed with the payment to $institutionName using the Virtual Account Code: $virtualAccountCode and the entered Virtual Account Number: $vaNumber?'),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Lanjutkan pembayaran
+                                Navigator.pop(context);
+                                // Tambahkan logika untuk melanjutkan pembayaran di sini
+                              },
+                              child: const Text('Continue'),
+                            ),
+                          ],
                         ),
-                        TextButton(
-                          onPressed: () {
-                            // Lanjutkan pembayaran
-                            Navigator.pop(context);
-                            // Tambahkan logika untuk melanjutkan pembayaran di sini
-                          },
-                          child: const Text('Continue'),
+                      );
+                    } else {
+                      // Feedback jika VA number kosong
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content:
+                              Text('Virtual Account Number cannot be empty'),
+                          backgroundColor: Colors.red,
                         ),
-                      ],
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF7EBDA6),
+                  ),
+                  child: const Text(
+                    'Continue Payment',
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                  );
-                } else {
-                  // Feedback jika VA number kosong
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Virtual Account Number cannot be empty'),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                }
-              },
-              child: const Text('Continue Payment'),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

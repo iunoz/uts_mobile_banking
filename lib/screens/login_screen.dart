@@ -22,7 +22,7 @@ class LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "LOGIN",
+          "Login",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -30,7 +30,7 @@ class LoginScreenState extends State<LoginScreen> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.teal,
+        backgroundColor: const Color(0xFF7EBDA6),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -54,14 +54,14 @@ class LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Registration Successful! Please log in.',
                       style: TextStyle(
-                        color: Colors.green,
+                        color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
 
-                //Gambar dengan Hero Widget
+                // Gambar dengan Hero Widget
                 const Hero(
                   tag: 'loginImage',
                   child: CircleAvatar(
@@ -70,71 +70,93 @@ class LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                const Text(
-                  "Email/Phone Number",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black, // Ubah menjadi warna hitam
-                  ),
-                ),
-                const SizedBox(height: 5),
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: "Enter your Email/Phone Number!",
-                    filled: true,
-                    fillColor: Colors
-                        .white, // Mengganti dengan warna putih untuk teks field
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 25),
-                const Text(
-                  "Password",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black, // Ubah menjadi warna hitam
-                  ),
-                ),
-                const SizedBox(height: 5),
-                TextField(
-                  obscureText: _obscurePassword,
-                  decoration: InputDecoration(
-                    labelText: "Enter your Password!",
-                    filled: true,
-                    fillColor: Colors
-                        .white, // Mengganti dengan warna putih untuk teks field
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscurePassword
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                        color: Colors.black, // Ubah menjadi warna hitam
+
+                // Kotak input Email/No HP dan Password
+                Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF7F2D6),
+                    borderRadius: BorderRadius.circular(10.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10.0,
+                        spreadRadius: 2.0,
+                        offset: const Offset(0, 5),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _obscurePassword = !_obscurePassword;
-                        });
-                      },
-                    ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      const Text(
+                        "Email/Phone Number",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      const TextField(
+                        decoration: InputDecoration(
+                          labelText: "Enter your Email/Phone Number!",
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 25),
+                      const Text(
+                        "Password",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      TextField(
+                        obscureText: _obscurePassword,
+                        decoration: InputDecoration(
+                          labelText: "Enter your Password!",
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: const OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscurePassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscurePassword = !_obscurePassword;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                //login button
+
+                // Login button
                 const SizedBox(height: 30),
                 const Center(
                   child: CustomButton(
-                    buttonText: 'LOGIN',
+                    buttonText: 'Login',
+                    textColor: Colors.white,
                     destination: HomeScreen(showAnimation: true),
-                    color: Colors.teal, // Ganti dengan warna teal
+                    color: Color(0xFF7EBDA6),
                     usePushReplacement: true,
                     borderRadius: 18,
                     transitionType: PageTransitionType.fade,
                   ),
                 ),
 
-                //klik register
+                // Klik register
+                const SizedBox(height: 30),
                 RichText(
                   text: TextSpan(
                     text: "Don't have an account?",
@@ -147,9 +169,9 @@ class LoginScreenState extends State<LoginScreen> {
                         text: ' Register',
                         style: const TextStyle(
                           fontSize: 16,
-                          color: Colors.teal,
-                          decoration: TextDecoration
-                              .underline, // Membuat teks "Register" menjadi underline
+                          color: Color(0xFF7EBDA6),
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
