@@ -200,6 +200,8 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Bank',
                     border: OutlineInputBorder(),
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                   items: _banks.entries.map((entry) {
                     return DropdownMenuItem<String>(
@@ -229,6 +231,8 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Recipient Account Number',
                     border: OutlineInputBorder(),
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                   keyboardType: TextInputType.number,
                 ),
@@ -238,6 +242,8 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Amount',
                     border: OutlineInputBorder(),
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                   keyboardType: TextInputType.number,
                 ),
@@ -247,6 +253,8 @@ class _InterbankTransferScreenState extends State<InterbanktransferScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Message (optional)',
                     border: OutlineInputBorder(),
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
                   keyboardType: TextInputType.text,
                 ),

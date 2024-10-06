@@ -103,6 +103,8 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Old PIN',
                           border: OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.white,
                         ),
                         obscureText: true, // Agar input tidak terlihat
                         validator: (value) {
@@ -119,6 +121,8 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
                         decoration: const InputDecoration(
                           labelText: 'New PIN',
                           border: OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.white,
                         ),
                         obscureText: true, // Agar input tidak terlihat
                         validator: (value) {
@@ -138,6 +142,8 @@ class _ChangePinScreenState extends State<ChangePinScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Confirm New PIN',
                           border: OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.white,
                         ),
                         obscureText: true, // Agar input tidak terlihat
                         validator: (value) {
