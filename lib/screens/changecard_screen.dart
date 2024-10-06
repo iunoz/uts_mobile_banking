@@ -167,7 +167,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey.shade300),
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey.shade100.withOpacity(0.8),
+                      color: Colors.teal.shade50,
                     ),
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -248,7 +248,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                       absorbing: !_isDamagedCardSelected,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade100.withOpacity(0.8),
+                          color: Colors.teal.shade50,
                           border: Border.all(
                             color: _isDamagedCardSelected
                                 ? Colors.grey.shade300
@@ -330,7 +330,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                   const SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade100.withOpacity(0.8),
+                      color: Colors.teal.shade50,
                       border: Border.all(color: Colors.grey.shade300),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -350,7 +350,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                         TextField(
                           controller: _nearestBankController,
                           decoration: InputDecoration(
-                            hintText: "Example: Sumi Bank - Kelapa Gading",
+                            hintText: "Ex: Sumi Bank - Kelapa Gading",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: const BorderSide(color: Colors.grey),

@@ -22,13 +22,9 @@ class EmoneyOption extends StatelessWidget {
       onTap: onTap, // callback
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected
-              ? Colors.grey.shade100.withOpacity(0.8)
-              : Colors.grey.shade100.withOpacity(0.8),
+          color: isSelected ? Colors.teal.shade50 : Colors.teal.shade50,
           border: Border.all(
-            color: isSelected
-                ? const Color(0xFF7EBDA6)
-                : Colors.grey.shade300.withOpacity(0.9),
+            color: isSelected ? const Color(0xFF7EBDA6) : Colors.teal.shade50,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(10),

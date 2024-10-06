@@ -236,7 +236,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                 const SizedBox(height: 50),
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade100.withOpacity(0.8),
+                    color: Colors.teal.shade50,
                     border: Border.all(color: Colors.grey.shade300),
                     borderRadius: BorderRadius.circular(12),
                   ),

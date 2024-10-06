@@ -56,6 +56,9 @@ class HomeScreenState extends State<HomeScreen> {
               fit: BoxFit.cover, //buat image cover seluruh screen
             ),
           ),
+          Container(
+            color: Colors.white.withOpacity(0.5),
+          ),
           //konten utama di home
           SingleChildScrollView(
             child: Padding(
@@ -64,7 +67,7 @@ class HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Card(
-                    color: Color(0xFFFFFCD1).withOpacity(0.8),
+                    color: Colors.teal.shade50,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -133,76 +136,94 @@ class HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 14,
-                    crossAxisSpacing: 14,
-                    childAspectRatio: 1.0,
-                    children: [
-                      CustomButton(
-                        buttonText: 'Top Up\nE-Money',
-                        destination: const TopupemoneyScreen(),
-                        color: Color(0xFFFFF9C2).withOpacity(0.85),
-                        icon: Icons.credit_card_rounded,
-                        borderRadius: 50, // Bulat
-                        transitionType: PageTransitionType.fade,
-                        iconSize: 30, // Ukuran ikon lebih kecil
-                        textSize: 10, // Ukuran teks lebih kecil
-                      ),
-                      CustomButton(
-                        buttonText: 'Transfer\nHistory',
-                        destination: const TransferHistoryScreen(),
-                        color: Color(0xFFFFF9C2).withOpacity(0.85),
-                        icon: Icons.history,
-                        borderRadius: 50, // Bulat
-                        transitionType: PageTransitionType.fade,
-                        iconSize: 30, // Ukuran ikon lebih kecil
-                        textSize: 10, // Ukuran teks lebih kecil
-                      ),
-                      CustomButton(
-                        buttonText: 'Interbank\nTransfer',
-                        destination: const InterbanktransferScreen(),
-                        color: Color(0xFFFFF9C2).withOpacity(0.85),
-                        icon: Icons.account_balance,
-                        borderRadius: 50, // Bulat
-                        transitionType: PageTransitionType.fade,
-                        iconSize: 30, // Ukuran ikon lebih kecil
-                        textSize: 10, // Ukuran teks lebih kecil
-                      ),
-                      CustomButton(
-                        buttonText: 'Account\nTransfer',
-                        destination: const InteraccounttransferScreen(),
-                        color: Color(0xFFFFF9C2).withOpacity(0.85),
-                        icon: Icons.balance,
-                        borderRadius: 50, // Bulat
-                        transitionType: PageTransitionType.fade,
-                        iconSize: 30, // Ukuran ikon lebih kecil
-                        textSize: 10, // Ukuran teks lebih kecil
-                      ),
-                      CustomButton(
-                        buttonText: 'Virtual\nAccount',
-                        destination: const VirtualAccountScreen(),
-                        color: Color(0xFFFFF9C2).withOpacity(0.85),
-                        icon: Icons.account_box,
-                        borderRadius: 50, // Bulat
-                        transitionType: PageTransitionType.fade,
-                        iconSize: 30, // Ukuran ikon lebih kecil
-                        textSize: 10, // Ukuran teks lebih kecil
-                      ),
-                      CustomButton(
-                        buttonText: 'Bills',
-                        destination: const BillsScreen(),
-                        color: Color(0xFFFFF9C2).withOpacity(0.85),
-                        icon: Icons.receipt,
-                        borderRadius: 50, // Bulat
-                        transitionType: PageTransitionType.fade,
-                        iconSize: 30, // Ukuran ikon lebih kecil
-                        textSize: 10, // Ukuran teks lebih kecil
-                      ),
-                    ],
-                  )
+                  Container(
+                    padding:
+                        const EdgeInsets.all(10.0), // padding untuk container
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF7EBDA6).withOpacity(
+                          0.5), // warna background dengan transparansi
+                      borderRadius: BorderRadius.circular(
+                          15), // sudut melengkung pada container
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white.withOpacity(0.1),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // posisi bayangan
+                        ),
+                      ],
+                    ),
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 14,
+                      crossAxisSpacing: 14,
+                      childAspectRatio: 1.0,
+                      children: [
+                        CustomButton(
+                          buttonText: 'Top Up\nE-Money',
+                          destination: const TopupemoneyScreen(),
+                          color: Colors.teal.shade50,
+                          icon: Icons.credit_card_rounded,
+                          borderRadius: 50,
+                          transitionType: PageTransitionType.fade,
+                          iconSize: 30,
+                          textSize: 10,
+                        ),
+                        CustomButton(
+                          buttonText: 'Transfer\nHistory',
+                          destination: const TransferHistoryScreen(),
+                          color: Colors.teal.shade50,
+                          icon: Icons.history,
+                          borderRadius: 50,
+                          transitionType: PageTransitionType.fade,
+                          iconSize: 30,
+                          textSize: 10,
+                        ),
+                        CustomButton(
+                          buttonText: 'Interbank\nTransfer',
+                          destination: const InterbanktransferScreen(),
+                          color: Colors.teal.shade50,
+                          icon: Icons.account_balance,
+                          borderRadius: 50,
+                          transitionType: PageTransitionType.fade,
+                          iconSize: 30,
+                          textSize: 10,
+                        ),
+                        CustomButton(
+                          buttonText: 'Account\nTransfer',
+                          destination: const InteraccounttransferScreen(),
+                          color: Colors.teal.shade50,
+                          icon: Icons.balance,
+                          borderRadius: 50,
+                          transitionType: PageTransitionType.fade,
+                          iconSize: 30,
+                          textSize: 10,
+                        ),
+                        CustomButton(
+                          buttonText: 'Virtual\nAccount',
+                          destination: const VirtualAccountScreen(),
+                          color: Colors.teal.shade50,
+                          icon: Icons.account_box,
+                          borderRadius: 50,
+                          transitionType: PageTransitionType.fade,
+                          iconSize: 30,
+                          textSize: 10,
+                        ),
+                        CustomButton(
+                          buttonText: 'Bills',
+                          destination: const BillsScreen(),
+                          color: Colors.teal.shade50,
+                          icon: Icons.receipt,
+                          borderRadius: 50,
+                          transitionType: PageTransitionType.fade,
+                          iconSize: 30,
+                          textSize: 10,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -218,7 +239,7 @@ class HomeScreenState extends State<HomeScreen> {
             ),
         ],
       ),
-      bottomNavigationBar: const BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         color: Color(0xFF7EBDA6),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
