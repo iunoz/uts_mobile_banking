@@ -232,6 +232,7 @@ class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
                         itemBuilder: (context, index) {
                           final transaction = filteredTransactions[index];
                           return Card(
+                            color: Colors.teal.shade50,
                             margin: const EdgeInsets.symmetric(vertical: 8.0),
                             child: ListTile(
                               leading: Icon(

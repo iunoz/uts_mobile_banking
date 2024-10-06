@@ -80,6 +80,7 @@ class InstitutionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.teal.shade50,
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       elevation: 4,
       child: ListTile(

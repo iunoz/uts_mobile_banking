@@ -84,6 +84,7 @@ class BillsScreen extends StatelessWidget {
   Card buildBillCard(BuildContext context, IconData icon, String title,
       bool hasBill, int amount) {
     return Card(
+      color: Colors.teal.shade50,
       child: GestureDetector(
         onTap: () {
           print(
