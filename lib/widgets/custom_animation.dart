@@ -7,11 +7,11 @@ class CustomAnimation extends StatelessWidget {
   final double height;
 
   const CustomAnimation({
-    Key? key,
+    super.key,
     required this.animationPath,
     this.width = 100.0,
     this.height = 100.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

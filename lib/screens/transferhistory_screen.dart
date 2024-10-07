@@ -5,10 +5,10 @@ class TransferHistoryScreen extends StatefulWidget {
   const TransferHistoryScreen({super.key});
 
   @override
-  _TransferHistoryScreenState createState() => _TransferHistoryScreenState();
+  TransferHistoryScreenState createState() => TransferHistoryScreenState();
 }
 
-class _TransferHistoryScreenState extends State<TransferHistoryScreen> {
+class TransferHistoryScreenState extends State<TransferHistoryScreen> {
   final TextEditingController _searchController = TextEditingController();
 
   // Sample list of transactions with dates

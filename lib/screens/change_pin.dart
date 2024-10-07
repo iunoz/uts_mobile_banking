@@ -4,10 +4,10 @@ class ChangePinScreen extends StatefulWidget {
   const ChangePinScreen({super.key});
 
   @override
-  _ChangePinScreenState createState() => _ChangePinScreenState();
+  ChangePinScreenState createState() => ChangePinScreenState();
 }
 
-class _ChangePinScreenState extends State<ChangePinScreen> {
+class ChangePinScreenState extends State<ChangePinScreen> {
   final _oldPinController = TextEditingController();
   final _newPinController = TextEditingController();
   final _confirmPinController = TextEditingController();

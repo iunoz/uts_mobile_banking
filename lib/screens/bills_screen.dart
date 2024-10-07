@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -61,8 +61,8 @@ class BillsScreen extends StatelessWidget {
                   children: [
                     buildBillCard(context, FontAwesomeIcons.bolt, 'Electricity',
                         true, 120000),
-                    buildBillCard(
-                        context, FontAwesomeIcons.tint, 'Water', true, 50000),
+                    buildBillCard(context, FontAwesomeIcons.droplet, 'Water',
+                        true, 50000),
                     buildBillCard(context, FontAwesomeIcons.fileInvoiceDollar,
                         'Tax', false, 0),
                     buildBillCard(context, FontAwesomeIcons.school, 'School',
@@ -87,8 +87,7 @@ class BillsScreen extends StatelessWidget {
       color: Colors.teal.shade50,
       child: GestureDetector(
         onTap: () {
-          print(
-              "Tapped on: $title, hasBill: $hasBill, amount: $amount"); // Debugging print
+          // Debugging print
           showDialog(
             context: context,
             builder: (BuildContext context) {

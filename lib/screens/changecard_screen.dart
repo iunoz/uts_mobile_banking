@@ -265,7 +265,7 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                                color: Colors.black,
                               ),
                             ),
                             const SizedBox(height: 10),
@@ -337,26 +337,16 @@ class _ChangeCardScreenState extends State<ChangeCardScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "Enter the nearest bank in your area",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        TextField(
+                        const SizedBox(height: 5),
+                        TextFormField(
                           controller: _nearestBankController,
-                          decoration: InputDecoration(
-                            hintText: "Example: Sumi Bank - Kelapa Gading",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: const BorderSide(color: Colors.grey),
-                            ),
+                          decoration: const InputDecoration(
+                            labelText:
+                                "Enter nearest bank: ex: Sumi Bank-Glodok",
+                            labelStyle: TextStyle(fontSize: 14),
                             filled: true,
                             fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.all(16),
+                            border: OutlineInputBorder(),
                           ),
                         ),
                       ],

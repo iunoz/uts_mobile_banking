@@ -11,6 +11,7 @@ class TopupemoneyScreen extends StatefulWidget {
 class TopupemoneyScreenState extends State<TopupemoneyScreen> {
   String selectedEmoney = '';
   final TextEditingController phoneController = TextEditingController();
+  final TextEditingController topUpAmountController = TextEditingController();
 
   void selectEmoney(String name) {
     setState(() {
@@ -20,7 +21,8 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
 
   void confirmTopUp() {
     String phoneNumber = phoneController.text;
-    if (selectedEmoney.isEmpty || phoneNumber.isEmpty) {
+    String topUpAmount = topUpAmountController.text;
+    if (selectedEmoney.isEmpty || phoneNumber.isEmpty || topUpAmount.isEmpty) {
       _showAlertDialog("Can Not Process",
           "Please select e-money and input phone number or code");
       return;
@@ -32,7 +34,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
         return AlertDialog(
           title: const Text("Confirm Top Up"),
           content: Text(
-              "Are you sure you want to top up using $selectedEmoney for number $phoneNumber?"),
+              "Are you sure you want to top up $topUpAmount using $selectedEmoney for number $phoneNumber?"),
           actions: [
             TextButton(
               onPressed: () {
@@ -90,7 +92,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
                   Navigator.of(context).pop();
                   _showAlertDialog(
                     'Success!',
-                    'Top up using $selectedEmoney for number ${phoneController.text} succeeded',
+                    'Top up using in amount ${topUpAmountController.text} for $selectedEmoney for number ${phoneController.text} succeeded',
                   );
                   _resetForm();
                 } else {
@@ -110,6 +112,7 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
     setState(() {
       selectedEmoney = '';
       phoneController.clear();
+      topUpAmountController.clear();
     });
   }
 
@@ -164,136 +167,129 @@ class TopupemoneyScreenState extends State<TopupemoneyScreen> {
           Container(
             color: Colors.white.withOpacity(0.5),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 50),
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    children: [
-                      EmoneyOption(
-                        name: "ShopeePay",
-                        imagePath: "assets/images/spay.jpg",
-                        onTap: () => selectEmoney("ShopeePay"),
-                        isSelected: selectedEmoney == "ShopeePay",
-                      ),
-                      EmoneyOption(
-                        name: "DANA",
-                        imagePath: "assets/images/dana.png",
-                        onTap: () => selectEmoney("DANA"),
-                        isSelected: selectedEmoney == "DANA",
-                      ),
-                      EmoneyOption(
-                        name: "Gopay",
-                        imagePath: "assets/images/gopay.png",
-                        onTap: () => selectEmoney("Gopay"),
-                        isSelected: selectedEmoney == "Gopay",
-                      ),
-                      EmoneyOption(
-                        name: "AstraPay",
-                        imagePath: "assets/images/astrapay.jpg",
-                        onTap: () => selectEmoney("AstraPay"),
-                        isSelected: selectedEmoney == "AstraPay",
-                      ),
-                      EmoneyOption(
-                        name: "OVO",
-                        imagePath: "assets/images/ovo.png",
-                        onTap: () => selectEmoney("OVO"),
-                        isSelected: selectedEmoney == "OVO",
-                      ),
-                      EmoneyOption(
-                        name: "I.Saku",
-                        imagePath: "assets/images/i.saku.png",
-                        onTap: () => selectEmoney("I.Saku"),
-                        isSelected: selectedEmoney == "I.Saku",
-                      ),
-                      EmoneyOption(
-                        name: "Link Aja",
-                        imagePath: "assets/images/linkaja.png",
-                        onTap: () => selectEmoney("Link Aja"),
-                        isSelected: selectedEmoney == "Link Aja",
-                      ),
-                      EmoneyOption(
-                        name: "eTOLL",
-                        imagePath: "assets/images/etoll.png",
-                        onTap: () => selectEmoney("eTOLL"),
-                        isSelected: selectedEmoney == "eTOLL",
-                      ),
-                      EmoneyOption(
-                        name: "Flazz",
-                        imagePath: "assets/images/flazz.png",
-                        onTap: () => selectEmoney("Flazz"),
-                        isSelected: selectedEmoney == "Flazz",
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 50),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.teal.shade50,
-                    border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Input phone number/code:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                          color: Colors.black,
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 40),
+                  SizedBox(
+                    height: 350,
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      children: [
+                        EmoneyOption(
+                          name: "ShopeePay",
+                          imagePath: "assets/images/spay.jpg",
+                          onTap: () => selectEmoney("ShopeePay"),
+                          isSelected: selectedEmoney == "ShopeePay",
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Container(
-                        height: 50,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
+                        EmoneyOption(
+                          name: "DANA",
+                          imagePath: "assets/images/dana.png",
+                          onTap: () => selectEmoney("DANA"),
+                          isSelected: selectedEmoney == "DANA",
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: TextField(
-                          controller: phoneController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Example: 085212345679",
-                            hintStyle: TextStyle(color: Colors.grey),
-                          ),
-                          keyboardType: TextInputType.phone,
+                        EmoneyOption(
+                          name: "Gopay",
+                          imagePath: "assets/images/gopay.png",
+                          onTap: () => selectEmoney("Gopay"),
+                          isSelected: selectedEmoney == "Gopay",
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: confirmTopUp,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF7EBDA6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                    ),
-                    child: const Text(
-                      "Confirm for Top Up",
-                      style: TextStyle(color: Colors.white),
+                        EmoneyOption(
+                          name: "AstraPay",
+                          imagePath: "assets/images/astrapay.jpg",
+                          onTap: () => selectEmoney("AstraPay"),
+                          isSelected: selectedEmoney == "AstraPay",
+                        ),
+                        EmoneyOption(
+                          name: "OVO",
+                          imagePath: "assets/images/ovo.png",
+                          onTap: () => selectEmoney("OVO"),
+                          isSelected: selectedEmoney == "OVO",
+                        ),
+                        EmoneyOption(
+                          name: "I.Saku",
+                          imagePath: "assets/images/i.saku.png",
+                          onTap: () => selectEmoney("I.Saku"),
+                          isSelected: selectedEmoney == "I.Saku",
+                        ),
+                        EmoneyOption(
+                          name: "Link Aja",
+                          imagePath: "assets/images/linkaja.png",
+                          onTap: () => selectEmoney("Link Aja"),
+                          isSelected: selectedEmoney == "Link Aja",
+                        ),
+                        EmoneyOption(
+                          name: "eTOLL",
+                          imagePath: "assets/images/etoll.png",
+                          onTap: () => selectEmoney("eTOLL"),
+                          isSelected: selectedEmoney == "eTOLL",
+                        ),
+                        EmoneyOption(
+                          name: "Flazz",
+                          imagePath: "assets/images/flazz.png",
+                          onTap: () => selectEmoney("Flazz"),
+                          isSelected: selectedEmoney == "Flazz",
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 10),
+                  TextFormField(
+                    controller: phoneController,
+                    decoration: const InputDecoration(
+                      labelText: "Input phone number/code:",
+                      labelStyle: TextStyle(
+                        fontSize: 14,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(),
+                      hintText: "Example: 085212345679",
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                    keyboardType: TextInputType.phone,
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    controller: topUpAmountController,
+                    decoration: const InputDecoration(
+                      labelText: "Input amount to top-up:",
+                      labelStyle: TextStyle(
+                        fontSize: 14,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(),
+                      hintText: "Example: 100000",
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                    keyboardType: TextInputType.number,
+                  ),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: confirmTopUp,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF7EBDA6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 15),
+                      ),
+                      child: const Text(
+                        "Confirm for Top Up",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
