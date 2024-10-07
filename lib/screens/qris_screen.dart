@@ -33,8 +33,8 @@ class _QrisScreenState extends State<QrisScreen> {
     controller.scannedDataStream.listen((scanData) {
       final qrResult = scanData.code!;
 
-      //validasi QR code (8 hingga 20 digits, spti norek di Indo)
-      if (RegExp(r'^\d{8,20}$').hasMatch(qrResult)) {
+      //validasi QR code (8 hingga 15 digits, spti norek di Indo)
+      if (RegExp(r'^\d{8,15}$').hasMatch(qrResult)) {
         controller.pauseCamera(); //pause kamera sebelum navigasi
         Navigator.push(
           // ignore: use_build_context_synchronously
